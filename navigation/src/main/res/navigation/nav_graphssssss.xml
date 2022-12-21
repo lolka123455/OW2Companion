@@ -2,12 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    >
+    app:startDestination="@id/fragment_search_player">
 
-    <fragment
-        android:id="@+id/fragment_search_player"
-        android:name="com.search_player.ow2companion.SearchPlayerFragment"
-        android:label="SearchPlayerFragment">
-    </fragment>
 
 </navigation>

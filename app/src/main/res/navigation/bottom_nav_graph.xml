@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_nav_graph"
+    app:startDestination="@id/searchPlayerFragment">
+    <fragment
+        android:id="@+id/searchPlayerFragment"
+        android:name="com.search_player.ow2companion.SearchPlayerFragment"
+        android:label="SearchPlayerFragment" />
+    <fragment
+        android:id="@+id/listOfHeroesFragment"
+        android:name="com.list_of_heroes.ow2companion.ListOfHeroesFragment"
+        android:label="ListOfHeroesFragment" />
+    <fragment
+        android:id="@+id/gameModesFragment"
+        android:name="com.game_modes.ow2companion.GameModesFragment"
+        android:label="GameModesFragment" />
+</navigation>

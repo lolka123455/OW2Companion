@@ -11,7 +11,8 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/navigation" />
+            <option value="$PROJECT_DIR$/game_modes_screen" />
+            <option value="$PROJECT_DIR$/list_of_heroes_screen" />
             <option value="$PROJECT_DIR$/search_player_screen" />
           </set>
         </option>
