@@ -1,4 +1,4 @@
-package com.game_modes.ow2companion
+package com.game_modes.ow2companion.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
