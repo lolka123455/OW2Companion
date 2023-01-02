@@ -7,7 +7,7 @@ import com.game_modes.ow2companion.adapters.viewHolder.GameModesViewHolder
 import com.game_modes.ow2companion.databinding.GamesModesItemBinding
 import com.game_modes.ow2companion.network.models.GameModesItem
 
-class GameModesAdapter constructor(private val gameModesList: List<GameModesItem>) :
+class GameModesAdapter constructor(private val gameModesList: List<GameModesItem> = emptyList()) :
     RecyclerView.Adapter<GameModesViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameModesViewHolder {
@@ -22,6 +22,10 @@ class GameModesAdapter constructor(private val gameModesList: List<GameModesItem
 
     override fun onBindViewHolder(holder: GameModesViewHolder, position: Int) {
         holder.bind(gameModesList[position])
+    }
+
+    override fun setHasStableIds(hasStableIds: Boolean) {
+        super.setHasStableIds(hasStableIds)
     }
 
     override fun getItemCount(): Int {
