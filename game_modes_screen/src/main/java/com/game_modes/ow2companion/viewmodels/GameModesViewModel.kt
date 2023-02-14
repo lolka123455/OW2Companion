@@ -8,6 +8,7 @@ import com.game_modes.ow2companion.network.models.GameModesList
 import com.game_modes.ow2companion.usecases.GetAllGameModesListUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class GameModesViewModel(
@@ -15,9 +16,9 @@ class GameModesViewModel(
 ) : ViewModel() {
 
     val gameModesItems: StateFlow<List<GameModesItem>>
-        get () = _gameModesItems
+        get () = _gameModesItems.asStateFlow()
     private val _gameModesItems: MutableStateFlow<List<GameModesItem>> =
-        MutableStateFlow(ArrayList<GameModesItem>())
+        MutableStateFlow(listOf())
 
     init {
         getGameModesList()
@@ -26,7 +27,8 @@ class GameModesViewModel(
     private fun getGameModesList() {
         try {
             viewModelScope.launch {
-                _gameModesItems.value = listOf(getAllGameModesListUseCase.invoke())
+                val result = getAllGameModesListUseCase.invoke()
+                _gameModesItems.tryEmit(listOf(result))
             }
         } catch (e: Exception) {
             e.printStackTrace()
