@@ -16,7 +16,8 @@ class App : Application() {
             androidLogger(Level.ERROR)
             androidContext(this@App)
             modules(
-                GameModesModule
+                GameModesModule,
+                NetworkModule
             )
         }
     }
