@@ -6,14 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.game_modes.ow2companion.adapter.GameModesAdapter
 import com.game_modes.ow2companion.databinding.FragmentGameModesBinding
 import com.game_modes.ow2companion.network.models.GameModesItem
 import com.game_modes.ow2companion.viewmodels.GameModesViewModel
-import com.mikepenz.fastadapter.FastAdapter
-import com.mikepenz.fastadapter.adapters.ItemAdapter
-import kotlinx.coroutines.flow.collect
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class GameModesFragment : Fragment() {
@@ -26,7 +22,7 @@ class GameModesFragment : Fragment() {
     private var listGameModes = listOf<GameModesItem>()
 
 
-        override fun onCreateView(
+    override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?

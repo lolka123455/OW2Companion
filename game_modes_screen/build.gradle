@@ -70,12 +70,4 @@ dependencies {
 
     implementation("com.squareup.okhttp3:logging-interceptor:$interceptor_version")
 
-    def fastAdapter_version = "5.7.0"
-
-    implementation "com.mikepenz:fastadapter:$fastAdapter_version"
-    implementation "com.mikepenz:fastadapter-extensions-binding:$fastAdapter_version"
-    implementation "com.mikepenz:fastadapter-extensions-drag:$fastAdapter_version"
-    implementation "com.mikepenz:fastadapter-extensions-utils:$fastAdapter_version"
-    implementation "com.mikepenz:fastadapter-extensions-diff:$fastAdapter_version"
-
 }
