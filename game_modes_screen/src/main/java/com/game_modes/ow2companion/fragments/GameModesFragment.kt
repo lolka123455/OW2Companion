@@ -22,7 +22,7 @@ class GameModesFragment : Fragment() {
     private var listGameModes = listOf<GameModesItem>()
 
 
-        override fun onCreateView(
+    override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
