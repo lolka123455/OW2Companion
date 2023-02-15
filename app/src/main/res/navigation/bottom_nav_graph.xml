@@ -9,7 +9,7 @@
         android:label="SearchPlayerFragment" />
     <fragment
         android:id="@+id/listOfHeroesFragment"
-        android:name="com.list_of_heroes.ow2companion.ListOfHeroesFragment"
+        android:name="com.list_of_heroes.ow2companion.fragments.ListOfHeroesFragment"
         android:label="ListOfHeroesFragment" />
     <fragment
         android:id="@+id/gameModesFragment"

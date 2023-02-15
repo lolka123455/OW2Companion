@@ -1,4 +1,4 @@
-package com.list_of_heroes.ow2companion
+package com.list_of_heroes.ow2companion.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
