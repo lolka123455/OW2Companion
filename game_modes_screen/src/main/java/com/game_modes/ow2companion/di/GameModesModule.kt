@@ -12,7 +12,7 @@ import retrofit2.Retrofit
 val GameModesModule = module {
 
     single {
-        provideCartScreenService(retrofit = get())
+        provideGameModesService(retrofit = get())
     }
 
     single<GameModesRepository> {
@@ -29,5 +29,5 @@ val GameModesModule = module {
 
 }
 
-fun provideCartScreenService(retrofit: Retrofit): GameModesService =
+fun provideGameModesService(retrofit: Retrofit): GameModesService =
     retrofit.create(GameModesService::class.java)

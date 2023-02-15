@@ -15,5 +15,5 @@ dependencyResolutionManagement {
 rootProject.name = "OW2 Companion"
 include ':app'
 include ':search_player_screen'
-include ':list_of_heroes_screen'
+include ':all_heroes_screen'
 include ':game_modes_screen'

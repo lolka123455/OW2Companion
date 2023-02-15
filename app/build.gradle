@@ -38,7 +38,7 @@ android {
 dependencies {
 
     implementation project(":search_player_screen")
-    implementation project(':list_of_heroes_screen')
+    implementation project(":all_heroes_screen")
     implementation project(":game_modes_screen")
 
     implementation 'androidx.core:core-ktx:1.9.0'
