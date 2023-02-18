@@ -6,32 +6,30 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
-import com.list_of_heroes.ow2companion.R
 import com.list_of_heroes.ow2companion.adapter.AllHeroesAdapter
-import com.list_of_heroes.ow2companion.databinding.FragmentDmgBinding
-import com.list_of_heroes.ow2companion.databinding.FragmentTanksBinding
+import com.list_of_heroes.ow2companion.databinding.FragmentDamageBinding
 import com.list_of_heroes.ow2companion.network.models.AllHeroesItem
-import com.list_of_heroes.ow2companion.viewmodels.AllHeroesViewModel
+import com.list_of_heroes.ow2companion.viewmodels.DamageHeroesViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class DmgFragment : Fragment() {
+class DamageFragment : Fragment() {
 
-    private val binding: FragmentDmgBinding
+    private val binding: FragmentDamageBinding
         get() = _binding!!
-    private var _binding: FragmentDmgBinding? = null
+    private var _binding: FragmentDamageBinding? = null
 
     private val adapter = AllHeroesAdapter()
 
     private var listAllHeroes = listOf<AllHeroesItem>()
 
-    private val viewModel: AllHeroesViewModel by viewModel()
+    private val viewModel: DamageHeroesViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentDmgBinding.inflate(inflater, container, false)
+        _binding = FragmentDamageBinding.inflate(inflater, container, false)
         return binding.root
     }
 
