@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="tab_tanks">Tanks</string>
-    <string name="tab_damage">DMG</string>
+    <string name="tab_damage">Damage</string>
     <string name="tab_support">Support</string>
 </resources>
