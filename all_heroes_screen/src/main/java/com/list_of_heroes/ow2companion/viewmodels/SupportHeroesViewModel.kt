@@ -3,15 +3,16 @@ package com.list_of_heroes.ow2companion.viewmodels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.list_of_heroes.ow2companion.network.models.AllHeroesItem
-import com.list_of_heroes.ow2companion.usecases.GetAllHeroesListUseCase
+import com.list_of_heroes.ow2companion.usecases.GetAllSupportListUseCase
+import com.list_of_heroes.ow2companion.usecases.GetAllTankListUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class AllHeroesViewModel(
-    private val getAllGameModesListUseCase: GetAllHeroesListUseCase
+class SupportHeroesViewModel(
+    private val getAllSupportListUseCase: GetAllSupportListUseCase
 ) : ViewModel() {
 
     private val _allHeroesList = MutableStateFlow(listOf<AllHeroesItem>())
@@ -21,7 +22,7 @@ class AllHeroesViewModel(
     fun getAllHeroes() {
         viewModelScope.launch(Dispatchers.Main) {
             try {
-                val result = getAllGameModesListUseCase.invoke()
+                val result = getAllSupportListUseCase.invoke()
                 _allHeroesList.tryEmit(result)
             } catch (e: Exception) {
                 e.printStackTrace()

@@ -5,6 +5,12 @@ import retrofit2.http.GET
 
 interface AllHeroesService {
 
-    @GET("heroes")
-    suspend fun getAllHeroes(): List<AllHeroesItem>
+    @GET("heroes?role=tank&locale=en-us")
+    suspend fun getAllTankHeroes(): List<AllHeroesItem>
+
+    @GET("heroes?role=damage&locale=en-us")
+    suspend fun getAllDamageHeroes(): List<AllHeroesItem>
+
+    @GET("heroes?role=support&locale=en-us")
+    suspend fun getAllSupportHeroes(): List<AllHeroesItem>
 }

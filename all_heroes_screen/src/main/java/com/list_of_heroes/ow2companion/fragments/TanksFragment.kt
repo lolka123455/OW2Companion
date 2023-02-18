@@ -6,12 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
-import com.list_of_heroes.ow2companion.R
 import com.list_of_heroes.ow2companion.adapter.AllHeroesAdapter
-import com.list_of_heroes.ow2companion.databinding.FragmentListOfHeroesBinding
 import com.list_of_heroes.ow2companion.databinding.FragmentTanksBinding
 import com.list_of_heroes.ow2companion.network.models.AllHeroesItem
-import com.list_of_heroes.ow2companion.viewmodels.AllHeroesViewModel
+import com.list_of_heroes.ow2companion.viewmodels.TankHeroesViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TanksFragment : Fragment() {
@@ -24,7 +22,7 @@ class TanksFragment : Fragment() {
 
     private var listAllHeroes = listOf<AllHeroesItem>()
 
-    private val viewModel: AllHeroesViewModel by viewModel()
+    private val viewModel: TankHeroesViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,

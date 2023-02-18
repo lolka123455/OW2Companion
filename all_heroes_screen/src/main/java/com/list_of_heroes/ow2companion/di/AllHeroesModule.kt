@@ -3,8 +3,12 @@ package com.list_of_heroes.ow2companion.di
 import com.list_of_heroes.ow2companion.network.api.AllHeroesService
 import com.list_of_heroes.ow2companion.repository.AllHeroesRepository
 import com.list_of_heroes.ow2companion.repository.AllHeroesRepositoryImpl
-import com.list_of_heroes.ow2companion.usecases.GetAllHeroesListUseCase
-import com.list_of_heroes.ow2companion.viewmodels.AllHeroesViewModel
+import com.list_of_heroes.ow2companion.usecases.GetAllDamageListUseCase
+import com.list_of_heroes.ow2companion.usecases.GetAllSupportListUseCase
+import com.list_of_heroes.ow2companion.usecases.GetAllTankListUseCase
+import com.list_of_heroes.ow2companion.viewmodels.DamageHeroesViewModel
+import com.list_of_heroes.ow2companion.viewmodels.SupportHeroesViewModel
+import com.list_of_heroes.ow2companion.viewmodels.TankHeroesViewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 
@@ -19,11 +23,27 @@ val AllHeroesModule = module {
     }
 
     factory {
-        GetAllHeroesListUseCase(get())
+        GetAllTankListUseCase(get())
     }
 
     factory {
-        AllHeroesViewModel(get())
+        GetAllDamageListUseCase(get())
+    }
+
+    factory {
+        GetAllSupportListUseCase(get())
+    }
+
+    factory {
+        TankHeroesViewModel(get())
+    }
+
+    factory {
+        DamageHeroesViewModel(get())
+    }
+
+    factory {
+        SupportHeroesViewModel(get())
     }
 
 }

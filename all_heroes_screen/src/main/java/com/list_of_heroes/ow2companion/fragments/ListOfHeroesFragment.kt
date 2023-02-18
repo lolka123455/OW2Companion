@@ -18,7 +18,7 @@ class ListOfHeroesFragment : Fragment() {
 
     private val fragmentsList = listOf(
         TanksFragment(),
-        DmgFragment(),
+        DamageFragment(),
         SupportFragment()
     )
 
