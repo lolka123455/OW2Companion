@@ -1,6 +1,7 @@
 package com.ow2companion
 
 import android.app.Application
+import com.details_for_hero_screen.ow2companion.di.DetailsHeroModule
 import com.game_modes.ow2companion.di.GameModesModule
 import com.list_of_heroes.ow2companion.di.AllHeroesModule
 import org.koin.android.ext.koin.androidContext
@@ -19,7 +20,8 @@ class App : Application() {
             modules(
                 GameModesModule,
                 NetworkModule,
-                AllHeroesModule
+                AllHeroesModule,
+                DetailsHeroModule
             )
         }
     }
