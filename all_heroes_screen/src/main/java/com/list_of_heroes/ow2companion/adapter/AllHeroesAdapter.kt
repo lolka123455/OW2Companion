@@ -18,6 +18,8 @@ class AllHeroesAdapter : RecyclerView.Adapter<AllHeroesAdapter.AllHeroesViewHold
             field = value
         }
 
+    var onHeroItemClickListener: ((AllHeroesItem) -> Unit)? = null
+
     class AllHeroesViewHolder(view: HeroesItemBinding) : RecyclerView.ViewHolder(view.root) {
         val binding = HeroesItemBinding.bind(view.root)
     }

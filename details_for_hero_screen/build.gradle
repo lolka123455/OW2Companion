@@ -36,7 +36,9 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation project(':all_heroes_screen')
+
+    implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -69,4 +71,17 @@ dependencies {
     def interceptor_version = "5.0.0-alpha.6"
 
     implementation("com.squareup.okhttp3:logging-interceptor:$interceptor_version")
+
+    def fastadapter_version = "5.7.0"
+
+    implementation "com.mikepenz:fastadapter:$fastadapter_version"
+    implementation "com.mikepenz:fastadapter-extensions-binding:$fastadapter_version" // view binding helpers
+    implementation "com.mikepenz:fastadapter-extensions-diff:$fastadapter_version" // diff util helpers
+    implementation "com.mikepenz:fastadapter-extensions-drag:$fastadapter_version" // drag support
+    implementation "com.mikepenz:fastadapter-extensions-paged:$fastadapter_version" // paging support
+    implementation "com.mikepenz:fastadapter-extensions-scroll:$fastadapter_version" // scroll helpers
+    implementation "com.mikepenz:fastadapter-extensions-swipe:$fastadapter_version" // swipe support
+    implementation "com.mikepenz:fastadapter-extensions-ui:$fastadapter_version" // pre-defined ui components
+    implementation "com.mikepenz:fastadapter-extensions-utils:$fastadapter_version" // needs the `expandable`, `drag` and `scroll` extension.
+
 }
