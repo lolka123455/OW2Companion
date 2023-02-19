@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace 'com.list_of_heroes.ow2companion'
+    namespace 'com.navigation.ow2companion'
     compileSdk 33
 
     defaultConfig {
@@ -29,14 +29,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    viewBinding {
-        enabled true
-    }
 }
 
 dependencies {
-
-    implementation project(":navigation")
 
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
@@ -50,25 +45,4 @@ dependencies {
 
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
-
-    def koin_version = '3.3.1'
-
-    implementation "io.insert-koin:koin-android:$koin_version"
-
-    def retrofit_version = '2.9.0'
-
-    implementation("com.squareup.retrofit2:retrofit:$retrofit_version")
-    implementation("com.squareup.retrofit2:converter-gson:$retrofit_version")
-
-    def lifecycle_version = "2.5.1"
-
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
-
-    def glide_version = "4.14.2"
-
-    implementation("com.github.bumptech.glide:glide:$glide_version")
-
-    def interceptor_version = "5.0.0-alpha.6"
-
-    implementation("com.squareup.okhttp3:logging-interceptor:$interceptor_version")
 }

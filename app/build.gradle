@@ -40,6 +40,7 @@ dependencies {
     implementation project(":search_player_screen")
     implementation project(":all_heroes_screen")
     implementation project(":game_modes_screen")
+    implementation project(":navigation")
     implementation project(":details_for_hero_screen")
 
     implementation 'androidx.core:core-ktx:1.9.0'
