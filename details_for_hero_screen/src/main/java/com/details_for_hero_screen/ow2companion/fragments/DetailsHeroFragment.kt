@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.details_for_hero_screen.ow2companion.databinding.FragmentDetailsHeroBinding
 import com.details_for_hero_screen.ow2companion.network.models.DetailsInfoHero
 import com.details_for_hero_screen.ow2companion.viewmodels.DetailsHeroViewModel
-import com.list_of_heroes.ow2companion.fragments.KEY_FRAGMENT_HEROES
+//import com.list_of_heroes.ow2companion.fragments.KEY_FRAGMENT_HEROES
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailsHeroFragment : Fragment() {
@@ -30,9 +30,9 @@ class DetailsHeroFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val detailsInfoHero = arguments?.get(KEY_FRAGMENT_HEROES) as DetailsInfoHero
-        setHeroBasicInformation(detailsInfoHero)
-        setHeroStory(detailsInfoHero)
+//        val detailsInfoHero = arguments?.get(KEY_FRAGMENT_HEROES) as DetailsInfoHero
+//        setHeroBasicInformation(detailsInfoHero)
+//        setHeroStory(detailsInfoHero)
     }
 
     private fun setHeroBasicInformation(detailsInfoHero: DetailsInfoHero) {

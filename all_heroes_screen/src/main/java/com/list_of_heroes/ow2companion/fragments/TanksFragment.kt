@@ -7,7 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
-import com.ow2companion.R as R2
+import com.navigation.ow2companion.R as R2
+
 import com.list_of_heroes.ow2companion.adapter.AllHeroesAdapter
 import com.list_of_heroes.ow2companion.databinding.FragmentTanksBinding
 import com.list_of_heroes.ow2companion.network.models.AllHeroesItem
@@ -46,13 +47,13 @@ class TanksFragment : Fragment() {
     }
 
     private fun setListenerAdapter() {
-        adapter.onHeroItemClickListener = {
-            val bundle = Bundle().apply {
-                putParcelable(KEY_FRAGMENT_HEROES, it)
-            }
-            requireActivity().findNavController(R2.id.navHostFragment)
-                .navigate(R2.id.action_tanksFragment_to_detailsHeroFragment, bundle)
-        }
+//        adapter.onHeroItemClickListener = {
+//            val bundle = Bundle().apply {
+//                putParcelable(KEY_FRAGMENT_HEROES, it)
+//            }
+//            requireActivity().findNavController(R2.id.navHostFragment)
+//                .navigate(R2.id.action_tanksFragment_to_detailsHeroFragment, bundle)
+//        }
     }
 
     private fun observeAllHeroes(){
