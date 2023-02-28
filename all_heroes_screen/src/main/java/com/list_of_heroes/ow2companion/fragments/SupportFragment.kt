@@ -19,7 +19,7 @@ class SupportFragment : Fragment() {
         get() = _binding!!
     private var _binding: FragmentSupportBinding? = null
 
-    private val adapter = AllHeroesAdapter()
+    private lateinit var adapter: AllHeroesAdapter
 
     private var listAllHeroes = listOf<AllHeroesItem>()
 

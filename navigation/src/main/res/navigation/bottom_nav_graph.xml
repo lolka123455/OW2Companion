@@ -19,6 +19,11 @@
         android:id="@+id/tanksFragment"
         android:name="com.list_of_heroes.ow2companion.fragments.TanksFragment"
         android:label="TanksFragment">
+        <argument
+            android:name="key"
+            app:argType="string"
+            android:defaultValue="ana" />
+
         <action
             android:id="@+id/action_tanksFragment_to_detailsHeroFragment"
             app:destination="@id/detailsHeroFragment" />
@@ -29,7 +34,7 @@
         android:name="com.list_of_heroes.ow2companion.fragments.DamageFragment"
         android:label="DamageFragment">
         <action
-            android:id="@+id/action_tanksFragment_to_detailsHeroFragment"
+            android:id="@+id/action_damageFragment_to_detailsHeroFragment"
             app:destination="@id/detailsHeroFragment" />
 
     </fragment>
@@ -38,7 +43,7 @@
         android:name="com.list_of_heroes.ow2companion.fragments.SupportFragment"
         android:label="SupportFragment">
         <action
-            android:id="@+id/action_tanksFragment_to_detailsHeroFragment"
+            android:id="@+id/action_supportFragment_to_detailsHeroFragment"
             app:destination="@id/detailsHeroFragment" />
 
     </fragment>

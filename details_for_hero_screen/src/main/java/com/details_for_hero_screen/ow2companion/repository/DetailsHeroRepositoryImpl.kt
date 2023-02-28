@@ -7,7 +7,7 @@ class DetailsHeroRepositoryImpl(
     private val detailsHeroService: DetailsHeroService
 ) : DetailsHeroRepository {
 
-    override suspend fun getFullDetailsForHero(): List<DetailsInfoHero> {
-        return detailsHeroService.getDetailsHero()
+    override suspend fun getFullDetailsForHero(hero_key : String): List<DetailsInfoHero> {
+        return detailsHeroService.getDetailsHero(hero_key)
     }
 }

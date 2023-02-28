@@ -1,29 +1,28 @@
 package com.list_of_heroes.ow2companion.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.findNavController
-import com.navigation.ow2companion.R as R2
-
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.list_of_heroes.ow2companion.adapter.AllHeroesAdapter
 import com.list_of_heroes.ow2companion.databinding.FragmentTanksBinding
+import com.list_of_heroes.ow2companion.fragments.TanksFragmentDirections
 import com.list_of_heroes.ow2companion.network.models.AllHeroesItem
 import com.list_of_heroes.ow2companion.viewmodels.TankHeroesViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-const val KEY_FRAGMENT_HEROES = "TanksFragment"
-
-class TanksFragment : Fragment() {
+class TanksFragment : Fragment(), AllHeroesAdapter.HeroItemListener {
 
     private val binding: FragmentTanksBinding
         get() = _binding!!
     private var _binding: FragmentTanksBinding? = null
 
-    private val adapter = AllHeroesAdapter()
+    private lateinit var adapter: AllHeroesAdapter
 
     private var listAllHeroes = listOf<AllHeroesItem>()
 
@@ -40,29 +39,31 @@ class TanksFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.gameModesRecyclerView.adapter = adapter
         viewModel.getAllHeroes()
+        setupRecyclerView()
+    }
+
+    private fun setupRecyclerView() {
+        adapter = AllHeroesAdapter(this)
+        binding.gameModesRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.gameModesRecyclerView.adapter = adapter
+
         observeAllHeroes()
-        setListenerAdapter()
     }
 
-    private fun setListenerAdapter() {
-//        adapter.onHeroItemClickListener = {
-//            val bundle = Bundle().apply {
-//                putParcelable(KEY_FRAGMENT_HEROES, it)
-//            }
-//            requireActivity().findNavController(R2.id.navHostFragment)
-//                .navigate(R2.id.action_tanksFragment_to_detailsHeroFragment, bundle)
-//        }
-    }
-
-    private fun observeAllHeroes(){
+    private fun observeAllHeroes() {
         lifecycleScope.launchWhenCreated {
-            viewModel.allHeroesList.collect{
+            viewModel.allHeroesList.collect {
                 listAllHeroes = it
                 adapter.allHeroesList = listAllHeroes
             }
         }
+    }
+
+    override fun onClickedHero(heroName: String) {
+        val action = TanksFragmentDirections.actionTanksFragmentToDetailsHeroFragment()
+        findNavController().navigate(action)
+        Toast.makeText(context,"CLICKED",Toast.LENGTH_SHORT).show()
     }
 
     override fun onDestroyView() {
