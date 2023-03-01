@@ -10,7 +10,11 @@
     <fragment
         android:id="@+id/listOfHeroesFragment"
         android:name="com.list_of_heroes.ow2companion.fragments.ListOfHeroesFragment"
-        android:label="ListOfHeroesFragment" />
+        android:label="ListOfHeroesFragment" >
+        <action
+            android:id="@+id/action_listOfHeroesFragment_to_detailsHeroFragment"
+            app:destination="@id/detailsHeroFragment" />
+    </fragment>
     <fragment
         android:id="@+id/gameModesFragment"
         android:name="com.game_modes.ow2companion.fragments.GameModesFragment"
@@ -18,37 +22,18 @@
     <fragment
         android:id="@+id/tanksFragment"
         android:name="com.list_of_heroes.ow2companion.fragments.TanksFragment"
-        android:label="TanksFragment">
-        <argument
-            android:name="key"
-            app:argType="string"
-            android:defaultValue="ana" />
-
-        <action
-            android:id="@+id/action_tanksFragment_to_detailsHeroFragment"
-            app:destination="@id/detailsHeroFragment" />
-
-    </fragment>
+        android:label="TanksFragment"/>
     <fragment
         android:id="@+id/damageFragment"
         android:name="com.list_of_heroes.ow2companion.fragments.DamageFragment"
-        android:label="DamageFragment">
-        <action
-            android:id="@+id/action_damageFragment_to_detailsHeroFragment"
-            app:destination="@id/detailsHeroFragment" />
-
-    </fragment>
+        android:label="DamageFragment"/>
     <fragment
         android:id="@+id/supportFragment"
         android:name="com.list_of_heroes.ow2companion.fragments.SupportFragment"
-        android:label="SupportFragment">
-        <action
-            android:id="@+id/action_supportFragment_to_detailsHeroFragment"
-            app:destination="@id/detailsHeroFragment" />
-
-    </fragment>
+        android:label="SupportFragment"/>
     <fragment
         android:id="@+id/detailsHeroFragment"
         android:name="com.details_for_hero_screen.ow2companion.fragments.DetailsHeroFragment"
-        android:label="DetailsHeroFragment" />
+        android:label="DetailsHeroFragment" >
+    </fragment>
 </navigation>

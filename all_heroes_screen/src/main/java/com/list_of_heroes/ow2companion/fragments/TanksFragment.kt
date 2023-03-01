@@ -9,9 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.list_of_heroes.ow2companion.R
 import com.list_of_heroes.ow2companion.adapter.AllHeroesAdapter
 import com.list_of_heroes.ow2companion.databinding.FragmentTanksBinding
-import com.list_of_heroes.ow2companion.fragments.TanksFragmentDirections
 import com.list_of_heroes.ow2companion.network.models.AllHeroesItem
 import com.list_of_heroes.ow2companion.viewmodels.TankHeroesViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -61,8 +61,9 @@ class TanksFragment : Fragment(), AllHeroesAdapter.HeroItemListener {
     }
 
     override fun onClickedHero(heroName: String) {
-        val action = TanksFragmentDirections.actionTanksFragmentToDetailsHeroFragment()
-        findNavController().navigate(action)
+        val bundle = Bundle()
+        bundle.putString("key",heroName)
+        findNavController().navigate(com.navigation.ow2companion.R.id.action_listOfHeroesFragment_to_detailsHeroFragment,bundle)
         Toast.makeText(context,"CLICKED",Toast.LENGTH_SHORT).show()
     }
 

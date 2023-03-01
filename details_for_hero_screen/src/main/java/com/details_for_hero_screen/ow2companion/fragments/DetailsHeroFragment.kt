@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.details_for_hero_screen.ow2companion.databinding.FragmentDetailsHeroBinding
 import com.details_for_hero_screen.ow2companion.network.models.DetailsInfoHero
@@ -29,20 +30,25 @@ class DetailsHeroFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val dest = arguments?.getString("key")?.let { viewModel.getDetailsHero(it) } as DetailsInfoHero
-        setHeroBasicInformation(dest)
-
+        setInitialData()
     }
 
-    private fun setHeroBasicInformation(detailsInfoHero: DetailsInfoHero) {
-        binding.tvHeroName.text = detailsInfoHero.name
-        binding.tvHeroDescription.text = detailsInfoHero.description
-        binding.tvHeroRole.text = detailsInfoHero.role
-        binding.tvHeroLocation.text = detailsInfoHero.location
+    private fun setInitialData(){
+        val details = arguments?.getString("key")?.let { viewModel.getDetailsHero(it) }
+        setHeroBasicInformation(details)
+    }
 
-        Glide.with(binding.root)
-            .load(detailsInfoHero.portrait)
-            .into(binding.ivHeroImage)
+    //Костыль для открытия фрагмента
+
+    private fun setHeroBasicInformation(detailsInfoHero: Unit?) {
+        binding.tvHeroName.text = "detailsInfoHero.name"
+        binding.tvHeroDescription.text = "detailsInfoHero.description"
+        binding.tvHeroRole.text = "detailsInfoHero.role"
+        binding.tvHeroLocation.text = "detailsInfoHero.location"
+
+//        Glide.with(binding.root)
+//            .load(detailsInfoHero.portrait)
+//            .into(binding.ivHeroImage)
     }
 
     private fun setHeroStory(detailsInfoHero: DetailsInfoHero) {
