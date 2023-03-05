@@ -4,5 +4,5 @@ import com.details_for_hero_screen.ow2companion.network.models.DetailsInfoHero
 
 interface DetailsHeroRepository {
 
-    suspend fun getFullDetailsForHero(hero_key : String): List<DetailsInfoHero>
+    suspend fun getFullDetailsForHero(hero_key : String): DetailsInfoHero
 }

@@ -16,6 +16,7 @@
             <option value="$PROJECT_DIR$/game_modes_screen" />
             <option value="$PROJECT_DIR$/navigation" />
             <option value="$PROJECT_DIR$/search_player_screen" />
+            <option value="$PROJECT_DIR$/state_screen" />
           </set>
         </option>
       </GradleProjectSettings>

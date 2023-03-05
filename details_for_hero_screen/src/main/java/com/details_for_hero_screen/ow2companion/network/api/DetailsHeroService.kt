@@ -9,5 +9,5 @@ interface DetailsHeroService {
     @GET("/heroes/{hero_key}")
     suspend fun getDetailsHero(
         @Path("hero_key") string: String
-    ): List<DetailsInfoHero>
+    ): DetailsInfoHero
 }

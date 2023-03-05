@@ -5,6 +5,6 @@ import com.details_for_hero_screen.ow2companion.repository.DetailsHeroRepository
 
 class GetFullDetailsForHeroUseCase(private val detailsHeroRepository: DetailsHeroRepository) {
 
-    suspend fun invoke(hero_key: String): List<DetailsInfoHero> =
+    suspend fun invoke(hero_key: String): DetailsInfoHero =
         detailsHeroRepository.getFullDetailsForHero(hero_key)
 }

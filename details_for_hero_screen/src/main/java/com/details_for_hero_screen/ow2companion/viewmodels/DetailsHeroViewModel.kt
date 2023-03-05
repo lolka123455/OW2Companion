@@ -13,8 +13,8 @@ class DetailsHeroViewModel(
     private val getFullDetailsForHeroUseCase: GetFullDetailsForHeroUseCase
 ) : ViewModel() {
 
-    private val _detailsHero = MutableStateFlow<List<DetailsInfoHero>>(emptyList())
-    val detailsHero : StateFlow<List<DetailsInfoHero>> = _detailsHero
+    private val _detailsHero = MutableStateFlow<DetailsInfoHero?>(null)
+    val detailsHero : StateFlow<DetailsInfoHero?> = _detailsHero
 
     fun getDetailsHero(name: String) {
         viewModelScope.launch(Dispatchers.IO) {
