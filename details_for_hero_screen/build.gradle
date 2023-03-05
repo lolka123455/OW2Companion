@@ -1,0 +1,84 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+android {
+    namespace 'com.details_for_hero_screen.ow2companion'
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 27
+        targetSdk 33
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    viewBinding {
+        enabled true
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    def nav_version = "2.5.3"
+
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    def koin_version = '3.3.1'
+
+    implementation "io.insert-koin:koin-android:$koin_version"
+
+    def retrofit_version = '2.9.0'
+
+    implementation("com.squareup.retrofit2:retrofit:$retrofit_version")
+    implementation("com.squareup.retrofit2:converter-gson:$retrofit_version")
+
+    def lifecycle_version = "2.5.1"
+
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+
+    def glide_version = "4.14.2"
+
+    implementation("com.github.bumptech.glide:glide:$glide_version")
+
+    def interceptor_version = "5.0.0-alpha.6"
+
+    implementation("com.squareup.okhttp3:logging-interceptor:$interceptor_version")
+
+    def fastadapter_version = "5.7.0"
+
+    implementation "com.mikepenz:fastadapter:$fastadapter_version"
+    implementation "com.mikepenz:fastadapter-extensions-binding:$fastadapter_version" // view binding helpers
+    implementation "com.mikepenz:fastadapter-extensions-diff:$fastadapter_version" // diff util helpers
+    implementation "com.mikepenz:fastadapter-extensions-drag:$fastadapter_version" // drag support
+    implementation "com.mikepenz:fastadapter-extensions-paged:$fastadapter_version" // paging support
+    implementation "com.mikepenz:fastadapter-extensions-scroll:$fastadapter_version" // scroll helpers
+    implementation "com.mikepenz:fastadapter-extensions-swipe:$fastadapter_version" // swipe support
+    implementation "com.mikepenz:fastadapter-extensions-ui:$fastadapter_version" // pre-defined ui components
+    implementation "com.mikepenz:fastadapter-extensions-utils:$fastadapter_version" // needs the `expandable`, `drag` and `scroll` extension.
+
+}

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvHeroName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="D.Va" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvHeroDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="D.Va — бывшая киберспортcменка. Сейчас она защищает родную страну помощью экспериментальной военной мехи." />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvHeroRole"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Tank" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvHeroLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="База MEKA, Пусан, Южная Корея (в прошлом), пост наблюдения: Гибралтар" />
+
+            </LinearLayout>
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivHeroImage"
+                android:layout_width="200dp"
+                android:layout_height="140dp"
+                android:layout_weight="1"
+                tools:src="@mipmap/ic_launcher" />
+
+        </LinearLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvHeroTitleSynopsis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            tools:text="Предыстория" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvHeroSynopsis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            tools:text="Хана Сонг, больше известная под своим псевдонимом D.Va, — не зря считается лучшей из лучших. Некогда D.Va была профессиональной киберспортсменкой, а теперь пилотирует меху и защищает Южную Корею. Ее игровые навыки очень ей в этом помогают. Она и ее товарищи-пилоты из отряда MEKA обороняют страну от вторжения гвишин — механической угрозы из морских глубин." />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvHeroTitleStory1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            tools:text="ГВИШИН" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvHeroStory1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            tools:text="Вот уже больше двадцати лет прошло с тех пор, как на Южную Корею напало гигантское роботизированное чудовище, восставшее из глубин Восточно-Китайского моря. Колоссальный робот нанес чудовищный урон прибрежным городам, прежде чем его удалось отбросить обратно в море. Чтобы защитить страну от этой угрозы, правительство Южной Кореи разработало бронированный беспилотник MEKA." />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvHeroTitleStory2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            tools:text="ОТРЯД МЕКА" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvHeroStory2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            tools:text="Со временем робот нашел уязвимость в системе дистанционного управления беспилотниками MEKA. Армии пришлось посадить в мехи пилотов-людей. В поисках подходящих кандидатов правительство обратилось к киберспортсменам: у тех была быстрая реакция и они умели быстро разбираться в сложной ситуации. Только они могли справиться продвинутым вооружением мех. К программе присоединились лучшие из лучших, причем по своей воле. Среди них была действующая чемпионка мира Хана Сонг, известная под ником D.Va. D.Va получила свой титул не просто так: она стремилась к победе любой ценой и заслужила репутацию упорного и беспощадного бойца." />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvHeroTitleStory3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            tools:text="3 ЗАГОЛОВОК" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvHeroStory3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            tools:text="Во время битвы с роботом D.Va была ранена и попала в кому. Она проснулась в больнице, где ее встретил ее бывший командир, генерал МакКрей. Он предложил ей стать частью нового отряда, который должен был защищать Южную Корею от робота. Для этого ей пришлось сделать выбор: либо продолжить карьеру киберспортсмена, либо стать частью армии. Для D.Va было очевидно, что она должна помогать своей стране. Она согласилась стать частью отряда МЕКА и вновь встала на пути робота. Но теперь она не одна. Вместе с ней в бою выходят ее друзья, которые помогают ей в борьбе с роботом." />
+
+    </LinearLayout>
+
+</ScrollView>

@@ -18,7 +18,7 @@ class DamageFragment : Fragment() {
         get() = _binding!!
     private var _binding: FragmentDamageBinding? = null
 
-    private val adapter = AllHeroesAdapter()
+    private lateinit var adapter: AllHeroesAdapter
 
     private var listAllHeroes = listOf<AllHeroesItem>()
 
