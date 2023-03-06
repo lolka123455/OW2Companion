@@ -25,8 +25,9 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/gameModesRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
+        android:paddingBottom="?attr/actionBarSize"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/games_modes_item" />
 
