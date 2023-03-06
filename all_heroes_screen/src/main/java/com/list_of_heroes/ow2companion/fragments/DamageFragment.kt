@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -50,7 +49,7 @@ class DamageFragment : Fragment(), AllHeroesAdapter.HeroItemListener {
         observeAllHeroes()
     }
 
-    private fun observeAllHeroes(){
+    private fun observeAllHeroes() {
         lifecycleScope.launchWhenCreated {
             viewModel.allHeroesList.collect {
                 listAllHeroes = it
@@ -61,9 +60,11 @@ class DamageFragment : Fragment(), AllHeroesAdapter.HeroItemListener {
 
     override fun onClickedHero(heroName: String) {
         val bundle = Bundle()
-        bundle.putString("key",heroName)
-        findNavController().navigate(com.navigation.ow2companion.R.id.action_listOfHeroesFragment_to_detailsHeroFragment,bundle)
-        Toast.makeText(context,"CLICKED",Toast.LENGTH_SHORT).show()
+        bundle.putString("key", heroName)
+        findNavController().navigate(
+            com.navigation.ow2companion.R.id.action_listOfHeroesFragment_to_detailsHeroFragment,
+            bundle
+        )
     }
 
     override fun onDestroyView() {

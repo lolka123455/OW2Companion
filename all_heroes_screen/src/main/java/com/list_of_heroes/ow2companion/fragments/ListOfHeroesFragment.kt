@@ -16,7 +16,7 @@ class ListOfHeroesFragment : Fragment() {
         get() = _binding!!
     private var _binding: FragmentListOfHeroesBinding? = null
 
-    private val fragmentsList = listOf(
+    private val fragmentsList: List<Fragment> = listOf(
         TanksFragment(),
         DamageFragment(),
         SupportFragment()
@@ -37,10 +37,10 @@ class ListOfHeroesFragment : Fragment() {
 
     private fun initialViewPager() {
         val titles = resources.getStringArray(R.array.tab_titles)
-        val adapter =ViewPagerAdapter(requireActivity(),fragmentsList)
+        val adapter = ViewPagerAdapter(requireActivity(), fragmentsList)
         binding.pager.adapter = adapter
-        TabLayoutMediator(binding.tabLayout, binding.pager) {
-                tabLayout, position -> tabLayout.text = titles[position]
+        TabLayoutMediator(binding.tabLayout, binding.pager) { tabLayout, position ->
+            tabLayout.text = titles[position]
         }.attach()
     }
 
