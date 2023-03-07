@@ -5,8 +5,18 @@
     app:startDestination="@id/searchPlayerFragment">
     <fragment
         android:id="@+id/searchPlayerFragment"
-        android:name="com.search_player.ow2companion.SearchPlayerFragment"
+        android:name="com.search_player.ow2companion.fragments.SearchPlayerFragment"
+        android:label="SearchPlayerFragment" >
+        <action
+            android:id="@+id/action_searchPlayerFragment_to_searchPlayerDetailsFragment"
+            app:destination="@id/searchPlayerDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchPlayerDetailsFragment"
+        android:name="com.search_player.ow2companion.fragments.SearchPlayerDetailsFragment"
         android:label="SearchPlayerFragment" />
+
     <fragment
         android:id="@+id/listOfHeroesFragment"
         android:name="com.list_of_heroes.ow2companion.fragments.ListOfHeroesFragment"
