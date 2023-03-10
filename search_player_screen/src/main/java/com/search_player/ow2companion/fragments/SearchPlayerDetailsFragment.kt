@@ -76,12 +76,12 @@ class SearchPlayerDetailsFragment : Fragment(), SearchPlayerDetailsAdapter.Playe
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val searchText = s?.toString()
-                if (searchText?.isEmpty() == true) {
+                val searchText = s?.toString()?.trim()
+                if (searchText.isNullOrEmpty()) {
                     // Clear the list when the search text is empty
                     adapter.allHeroesList = emptyList()
                 } else {
-                    searchText?.let { handleNonEmptySearchText(it) }
+                    handleNonEmptySearchText(searchText)
                 }
             }
 
@@ -93,7 +93,6 @@ class SearchPlayerDetailsFragment : Fragment(), SearchPlayerDetailsAdapter.Playe
         if (searchText != lastSearchQuery) {
             // Fetch new data only if the search query has changed
             fetchNewData(searchText)
-            lastSearchQuery = searchText
         } else {
             // If the search query is the same as the last one, display the previously fetched data
             displayPreviouslyFetchedData()
@@ -101,19 +100,13 @@ class SearchPlayerDetailsFragment : Fragment(), SearchPlayerDetailsAdapter.Playe
     }
 
     private fun fetchNewData(searchText: String) {
-        if (lastSearchQuery == null) {
-            // If the previous search query is null, fetch new data
-            setInitialData(searchText)
-        } else {
-            // If the search query is not the same as the previous one, fetch new data
-            setInitialData(searchText)
-        }
+        setInitialData(searchText)
+        lastSearchQuery = searchText
     }
 
     private fun displayPreviouslyFetchedData() {
         adapter.allHeroesList = similarPlayersList
     }
-
 
     private fun observeSimilarPlayersFounded() {
         lifecycleScope.launchWhenCreated {
