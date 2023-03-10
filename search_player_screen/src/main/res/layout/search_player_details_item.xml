@@ -62,29 +62,82 @@
             android:layout_weight="10"
             android:layout_marginTop="5dp"
             android:layout_marginStart="5dp"
-            android:orientation="vertical">
+            android:baselineAligned="false"
+            android:orientation="horizontal">
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/tankLogo"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginTop="2dp"
-                android:src="@drawable/ic_tank" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/damageLogo"
-                android:layout_width="25dp"
-                android:layout_marginTop="5dp"
-                android:layout_height="25dp"
-                android:src="@drawable/ic_damage" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/tankLogo"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="2dp"
+                    android:src="@drawable/ic_tank" />
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/supportLogo"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="2dp"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/ic_support" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivTankRank"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    tools:src="@drawable/ic_tank" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/damageLogo"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_damage" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivDamageRank"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    tools:src="@drawable/ic_damage" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/supportLogo"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_support" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivSupportRank"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    tools:src="@drawable/ic_support" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
