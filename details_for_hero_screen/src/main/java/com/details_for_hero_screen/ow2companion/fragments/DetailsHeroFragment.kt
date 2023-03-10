@@ -51,8 +51,6 @@ class DetailsHeroFragment : Fragment() {
         }
     }
 
-    // TODO Тут есть проблема что 2 абзац обрывается надо смотреть верстку 2 абзаца или почему не хватило места
-
     private fun setHeroBasicInformation(detailsInfoHero: DetailsInfoHero?) {
 
         if (detailsInfoHero == null) return

@@ -4,6 +4,8 @@ import com.search_player.ow2companion.network.api.SearchPlayerService
 import com.search_player.ow2companion.repository.SearchPlayerRepository
 import com.search_player.ow2companion.repository.SearchPlayerRepositoryImpl
 import com.search_player.ow2companion.usecases.GetAllSimilarPlayersFounded
+import com.search_player.ow2companion.viewmodels.SearchPlayerDetailsViewModel
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 
@@ -21,6 +23,9 @@ val SearchPlayerModule = module {
         GetAllSimilarPlayersFounded(get())
     }
 
+    viewModel {
+        SearchPlayerDetailsViewModel(get())
+    }
 
 }
 
