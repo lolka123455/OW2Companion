@@ -3,7 +3,7 @@ package com.search_player.ow2companion.di
 import com.search_player.ow2companion.network.api.SearchPlayerService
 import com.search_player.ow2companion.repository.SearchPlayerRepository
 import com.search_player.ow2companion.repository.SearchPlayerRepositoryImpl
-import com.search_player.ow2companion.usecases.GetAllSimilarPlayersFounded
+import com.search_player.ow2companion.usecases.GetAllSimilarPlayersFoundedUseCase
 import com.search_player.ow2companion.viewmodels.SearchPlayerDetailsViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -20,7 +20,7 @@ val SearchPlayerModule = module {
     }
 
     factory {
-        GetAllSimilarPlayersFounded(get())
+        GetAllSimilarPlayersFoundedUseCase(get())
     }
 
     viewModel {
