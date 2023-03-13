@@ -43,6 +43,8 @@ dependencies {
     implementation project(":navigation")
     implementation project(":details_for_hero_screen")
     implementation project(":state_screen")
+    implementation project(":player_details_info_screen")
+
 
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
