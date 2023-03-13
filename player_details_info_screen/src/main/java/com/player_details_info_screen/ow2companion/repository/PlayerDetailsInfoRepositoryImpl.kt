@@ -11,8 +11,8 @@ class PlayerDetailsInfoRepositoryImpl(
 
     override suspend fun getExactFoundPlayerBasicInfo(
         player_id: String
-    ): List<FoundPlayerBasicInfo> {
-        return listOf(playerDetailsInfoService.getPlayerBasicInfo(player_id))
+    ): FoundPlayerBasicInfo {
+        return playerDetailsInfoService.getPlayerBasicInfo(player_id)
     }
 
     override suspend fun getPlayerSummaryDetailsInfoCompetitive(

@@ -7,6 +7,6 @@ class GetExactFoundPlayerBasicInfoUseCase(
     private val playerDetailsInfoRepository: PlayerDetailsInfoRepository
 ) {
 
-    suspend fun invoke(player_id: String): List<FoundPlayerBasicInfo> =
+    suspend fun invoke(player_id: String): FoundPlayerBasicInfo =
         playerDetailsInfoRepository.getExactFoundPlayerBasicInfo(player_id)
 }

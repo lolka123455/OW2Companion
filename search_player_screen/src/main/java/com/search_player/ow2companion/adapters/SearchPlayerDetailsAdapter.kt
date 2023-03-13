@@ -15,7 +15,7 @@ class SearchPlayerDetailsAdapter(private val listener: PlayerItemListener) :
     RecyclerView.Adapter<SearchPlayerDetailsAdapter.AllHeroesViewHolder>() {
 
     interface PlayerItemListener {
-        fun onClickedHero(playerName: String)
+        fun onClickedPlayer(playerName: String)
     }
 
     var allHeroesList = listOf<SearchPlayer>()
@@ -76,7 +76,7 @@ class SearchPlayerDetailsAdapter(private val listener: PlayerItemListener) :
         }
 
         override fun onClick(p0: View?) {
-            listener.onClickedHero(playerItem.username)
+            listener.onClickedPlayer(playerItem.username)
         }
     }
 }

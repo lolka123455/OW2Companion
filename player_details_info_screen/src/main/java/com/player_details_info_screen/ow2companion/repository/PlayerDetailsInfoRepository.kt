@@ -6,7 +6,7 @@ import com.player_details_info_screen.ow2companion.network.models.quickplay.Play
 
 interface PlayerDetailsInfoRepository {
 
-    suspend fun getExactFoundPlayerBasicInfo(player_id: String): List<FoundPlayerBasicInfo>
+    suspend fun getExactFoundPlayerBasicInfo(player_id: String): FoundPlayerBasicInfo
 
     suspend fun getPlayerSummaryDetailsInfoCompetitive(
         player_id: String

@@ -6,7 +6,6 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -117,8 +116,17 @@ class SearchPlayerDetailsFragment : Fragment(), SearchPlayerDetailsAdapter.Playe
         }
     }
 
-    override fun onClickedHero(playerName: String) {
-        Toast.makeText(context,"Переход", Toast.LENGTH_SHORT).show()
+
+    // Тут мы берем то что вписал пользователь применяем changeMinusToHash и прокидываем
+    override fun onClickedPlayer(playerName: String) {
+        val bundle = Bundle()
+        val inputText = binding.etSearchNamePlayer.text.toString().trim()
+        val modifiedName = changeMinusToHash(inputText)
+        bundle.putString("player",modifiedName)
+        findNavController().navigate(
+            com.navigation.ow2companion.R.id.action_searchPlayerDetailsFragment_to_personalPlayerInfoDetailsFragment,
+            bundle
+        )
     }
 
     private fun onBackPressedToSearchPlayer() {
