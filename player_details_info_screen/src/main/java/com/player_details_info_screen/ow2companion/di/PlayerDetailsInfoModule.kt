@@ -6,7 +6,9 @@ import com.player_details_info_screen.ow2companion.repository.PlayerDetailsInfoR
 import com.player_details_info_screen.ow2companion.usecases.GetExactFoundPlayerBasicInfoUseCase
 import com.player_details_info_screen.ow2companion.usecases.GetPlayerStatsSummaryForCompetitiveUseCase
 import com.player_details_info_screen.ow2companion.usecases.GetPlayerStatsSummaryForQuickPlayUseCase
+import com.player_details_info_screen.ow2companion.viewmodels.CompetitivePlayerDetailsInfoViewModel
 import com.player_details_info_screen.ow2companion.viewmodels.PersonalPlayerInfoDetailsViewModel
+import com.player_details_info_screen.ow2companion.viewmodels.QuickPlayPlayerDetailsInfoViewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 
@@ -34,6 +36,14 @@ val PlayerDetailsInfoModule = module {
 
     factory {
         PersonalPlayerInfoDetailsViewModel(get())
+    }
+
+    factory {
+        CompetitivePlayerDetailsInfoViewModel(get())
+    }
+
+    factory {
+        QuickPlayPlayerDetailsInfoViewModel(get())
     }
 
 }

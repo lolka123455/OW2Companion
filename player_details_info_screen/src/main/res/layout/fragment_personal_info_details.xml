@@ -142,4 +142,9 @@
 
     </LinearLayout>
 
+<!--    <include-->
+<!--        android:id="@+id/viewPagerInclude"-->
+<!--        layout="@layout/fragment_game_modes"-->
+<!--        android:visibility="visible" />-->
+
 </LinearLayout>

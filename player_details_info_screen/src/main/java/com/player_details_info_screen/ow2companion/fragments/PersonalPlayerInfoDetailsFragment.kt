@@ -20,7 +20,7 @@ class PersonalPlayerInfoDetailsFragment : Fragment() {
         get() = _binding!!
     private var _binding: FragmentPersonalInfoDetailsBinding? = null
 
-    private val viewModel: PersonalPlayerInfoDetailsViewModel by viewModel()
+    private val viewModelTitleInfo: PersonalPlayerInfoDetailsViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,8 +37,28 @@ class PersonalPlayerInfoDetailsFragment : Fragment() {
         observe()
     }
 
+    // TODO время персов прилетает в секундах
+
+    // Для нескольких viewmodels
+    //private fun setInitialData(viewModels: List<BaseViewModel>) {
+    //    arguments?.getString("player")?.let { player ->
+    //        viewModels.forEach { viewModel ->
+    //            when (viewModel) {
+    //                is PlayerViewModel -> viewModel.getTitleExactFoundPlayerBasicInfo(player)
+    //                is TeamViewModel -> viewModel.getTitleExactFoundTeamBasicInfo(player)
+    //                is GameViewModel -> viewModel.getTitleExactFoundGameBasicInfo(player)
+    //                // Add more cases for other view models
+    //            }
+    //        }
+    //    }
+    //}
+
+    //setInitialData(listOf(playerViewModel, teamViewModel, gameViewModel))
+
+
+    // Тут мы просто создаем другие viewmodels и вставляем то что нам прилетело
     private fun setInitialData() {
-        arguments?.getString("player")?.let { viewModel.getTitleExactFoundPlayerBasicInfo(it) }
+        arguments?.getString("player")?.let { viewModelTitleInfo.getTitleExactFoundPlayerBasicInfo(it) }
     }
 
     private fun observe() {
@@ -47,7 +67,7 @@ class PersonalPlayerInfoDetailsFragment : Fragment() {
 
     private fun observeTitleBasicInfoPlayers() {
         lifecycleScope.launchWhenCreated {
-            viewModel.exactFoundPlayerBasicInfo.collect {
+            viewModelTitleInfo.exactFoundPlayerBasicInfo.collect {
                 setTitleBasicInfoPlayers(it)
             }
         }
