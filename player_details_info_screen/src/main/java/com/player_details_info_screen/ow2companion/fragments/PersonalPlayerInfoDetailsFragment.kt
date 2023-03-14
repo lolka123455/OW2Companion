@@ -8,7 +8,9 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
+import com.google.android.material.tabs.TabLayoutMediator
 import com.player_details_info_screen.ow2companion.R
+import com.player_details_info_screen.ow2companion.adapters.ViewPagerAdapter
 import com.player_details_info_screen.ow2companion.databinding.FragmentPersonalInfoDetailsBinding
 import com.player_details_info_screen.ow2companion.network.models.playerBasicInfo.FoundPlayerBasicInfo
 import com.player_details_info_screen.ow2companion.viewmodels.PersonalPlayerInfoDetailsViewModel
@@ -21,6 +23,11 @@ class PersonalPlayerInfoDetailsFragment : Fragment() {
     private var _binding: FragmentPersonalInfoDetailsBinding? = null
 
     private val viewModelTitleInfo: PersonalPlayerInfoDetailsViewModel by viewModel()
+
+    private val fragmentsList: List<Fragment> = listOf(
+        CompetitivePlayerDetailsInfoFragment(),
+        QuickPlayPlayerDetailsInfoFragment()
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,6 +42,7 @@ class PersonalPlayerInfoDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setInitialData()
         observe()
+        initialViewPager()
     }
 
     // TODO время персов прилетает в секундах
@@ -53,12 +61,22 @@ class PersonalPlayerInfoDetailsFragment : Fragment() {
     //    }
     //}
 
-    //setInitialData(listOf(playerViewModel, teamViewModel, gameViewModel))
+//    setInitialData(listOf(playerViewModel, teamViewModel, gameViewModel))
 
 
     // Тут мы просто создаем другие viewmodels и вставляем то что нам прилетело
     private fun setInitialData() {
-        arguments?.getString("player")?.let { viewModelTitleInfo.getTitleExactFoundPlayerBasicInfo(it) }
+        arguments?.getString("player")
+            ?.let { viewModelTitleInfo.getTitleExactFoundPlayerBasicInfo(it) }
+    }
+
+    private fun initialViewPager() {
+        val titles = resources.getStringArray(R.array.tab_titles)
+        val adapter = ViewPagerAdapter(requireActivity(), fragmentsList)
+        binding.pager.adapter = adapter
+        TabLayoutMediator(binding.tabLayout, binding.pager) { tabLayout, position ->
+            tabLayout.text = titles[position]
+        }.attach()
     }
 
     private fun observe() {
