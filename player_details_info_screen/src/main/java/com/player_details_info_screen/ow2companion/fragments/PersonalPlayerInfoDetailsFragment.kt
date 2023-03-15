@@ -70,6 +70,13 @@ class PersonalPlayerInfoDetailsFragment : Fragment() {
         TabLayoutMediator(binding.tabLayout, binding.pager) { tabLayout, position ->
             tabLayout.text = titles[position]
         }.attach()
+
+        // Set data in the fragments
+        fragmentsList.forEach { fragment ->
+            val bundle = Bundle()
+            bundle.putString("player", arguments?.getString("player"))
+            fragment.arguments = bundle
+        }
     }
 
     private fun observe() {

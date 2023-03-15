@@ -36,8 +36,7 @@ class QuickPlayPlayerDetailsInfoFragment : Fragment() {
 
     //TODO запрос не проходит
     private fun setInitialDataQuickPlay(){
-        viewModel.getViewPagerQuickPlayDetailsInfo("fullgenga-2713")
-
+        arguments?.getString("player")?.let { viewModel.getViewPagerQuickPlayDetailsInfo(it) }
     }
 
     private fun observe(){
