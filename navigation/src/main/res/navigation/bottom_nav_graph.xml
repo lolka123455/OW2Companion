@@ -26,14 +26,7 @@
     <fragment
         android:id="@+id/personalPlayerInfoDetailsFragment"
         android:name="com.player_details_info_screen.ow2companion.fragments.PersonalPlayerInfoDetailsFragment"
-        android:label="PersonalPlayerInfoDetailsPlayerFragment" >
-        <action
-            android:id="@+id/action_personalPlayerInfoDetailsFragment_to_quickPlayPlayerDetailsInfoFragment"
-            app:destination="@id/quickPlayPlayerDetailsInfoFragment" />
-        <action
-            android:id="@+id/action_personalPlayerInfoDetailsFragment_to_competitivePlayPlayerDetailsInfoFragment"
-            app:destination="@id/competitivePlayPlayerDetailsInfoFragment" />
-    </fragment>
+        android:label="PersonalPlayerInfoDetailsPlayerFragment" />
 
     <fragment
         android:id="@+id/quickPlayPlayerDetailsInfoFragment"

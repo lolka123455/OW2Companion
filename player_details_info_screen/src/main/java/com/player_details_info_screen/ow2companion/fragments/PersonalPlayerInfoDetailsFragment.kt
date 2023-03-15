@@ -1,10 +1,12 @@
 package com.player_details_info_screen.ow2companion.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -15,6 +17,10 @@ import com.player_details_info_screen.ow2companion.adapters.ViewPagerAdapter
 import com.player_details_info_screen.ow2companion.databinding.FragmentPersonalInfoDetailsBinding
 import com.player_details_info_screen.ow2companion.network.models.playerBasicInfo.FoundPlayerBasicInfo
 import com.player_details_info_screen.ow2companion.viewmodels.PersonalPlayerInfoDetailsViewModel
+import com.player_details_info_screen.ow2companion.viewmodels.QuickPlayPlayerDetailsInfoViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PersonalPlayerInfoDetailsFragment : Fragment() {
@@ -25,10 +31,8 @@ class PersonalPlayerInfoDetailsFragment : Fragment() {
 
     private val viewModelTitleInfo: PersonalPlayerInfoDetailsViewModel by viewModel()
 
-    private val fragmentsList: List<Fragment> = listOf(
-        QuickPlayPlayerDetailsInfoFragment(),
-        CompetitivePlayerDetailsInfoFragment()
-    )
+    private val viewModelQuickPlay: QuickPlayPlayerDetailsInfoViewModel by viewModel()
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,28 +52,16 @@ class PersonalPlayerInfoDetailsFragment : Fragment() {
 
     // TODO время персов прилетает в секундах
 
-    // Для нескольких viewmodels
-    //private fun setInitialData(viewModels: List<BaseViewModel>) {
-    //    arguments?.getString("player")?.let { player ->
-    //        viewModels.forEach { viewModel ->
-    //            when (viewModel) {
-    //                is PlayerViewModel -> viewModel.getTitleExactFoundPlayerBasicInfo(player)
-    //                is TeamViewModel -> viewModel.getTitleExactFoundTeamBasicInfo(player)
-    //                is GameViewModel -> viewModel.getTitleExactFoundGameBasicInfo(player)
-    //                // Add more cases for other view models
-    //            }
-    //        }
-    //    }
-    //}
-
-//    setInitialData(listOf(playerViewModel, teamViewModel, gameViewModel))
-
-
-    // Тут мы просто создаем другие viewmodels и вставляем то что нам прилетело
-    private fun setInitialData() {
-        arguments?.getString("player")
-            ?.let { viewModelTitleInfo.getTitleExactFoundPlayerBasicInfo(it) }
+    fun setInitialData() {
+        val player = arguments?.getString("player") ?: throw IllegalArgumentException("Missing player argument")
+        viewModelTitleInfo.getTitleExactFoundPlayerBasicInfo(player)
     }
+
+
+    private val fragmentsList: List<Fragment> = listOf(
+        QuickPlayPlayerDetailsInfoFragment(),
+        CompetitivePlayerDetailsInfoFragment()
+    )
 
     private fun initialViewPager() {
         val titles = resources.getStringArray(R.array.tab_titles)

@@ -30,13 +30,14 @@ class QuickPlayPlayerDetailsInfoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setInitialDataQuickPlay()
         observe()
-        setInitialData()
     }
 
     //TODO запрос не проходит
-    private fun setInitialData(){
-        arguments?.getString("player")?.let { viewModel.getViewPagerQuickPlayDetailsInfo(it) }
+    private fun setInitialDataQuickPlay(){
+        viewModel.getViewPagerQuickPlayDetailsInfo("fullgenga-2713")
+
     }
 
     private fun observe(){
