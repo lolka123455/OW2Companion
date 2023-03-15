@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">player_details_info_screen</string>
+    <string name="quick_play">quickplay</string>
+    <string name="competitive">competitive</string>
+
+    <string-array name="tab_titles">
+        <item>@string/quick_play</item>
+        <item>@string/competitive</item>
+    </string-array>
+</resources>
