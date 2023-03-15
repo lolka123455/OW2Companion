@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayoutMediator
 import com.player_details_info_screen.ow2companion.R
@@ -25,8 +26,8 @@ class PersonalPlayerInfoDetailsFragment : Fragment() {
     private val viewModelTitleInfo: PersonalPlayerInfoDetailsViewModel by viewModel()
 
     private val fragmentsList: List<Fragment> = listOf(
-        CompetitivePlayerDetailsInfoFragment(),
-        QuickPlayPlayerDetailsInfoFragment()
+        QuickPlayPlayerDetailsInfoFragment(),
+        CompetitivePlayerDetailsInfoFragment()
     )
 
     override fun onCreateView(

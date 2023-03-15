@@ -30,12 +30,20 @@
         <action
             android:id="@+id/action_personalPlayerInfoDetailsFragment_to_quickPlayPlayerDetailsInfoFragment"
             app:destination="@id/quickPlayPlayerDetailsInfoFragment" />
+        <action
+            android:id="@+id/action_personalPlayerInfoDetailsFragment_to_competitivePlayPlayerDetailsInfoFragment"
+            app:destination="@id/competitivePlayPlayerDetailsInfoFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/quickPlayPlayerDetailsInfoFragment"
         android:name="com.player_details_info_screen.ow2companion.fragments.QuickPlayPlayerDetailsInfoFragment"
         android:label="QuickPlayPlayerDetailsInfoFragment" />
+
+    <fragment
+        android:id="@+id/competitivePlayPlayerDetailsInfoFragment"
+        android:name="com.player_details_info_screen.ow2companion.fragments.CompetitivePlayerDetailsInfoFragment"
+        android:label="CompetitivePlayerDetailsInfoFragment" />
 
     <fragment
         android:id="@+id/listOfHeroesFragment"

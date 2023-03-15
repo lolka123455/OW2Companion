@@ -34,6 +34,7 @@ class QuickPlayPlayerDetailsInfoFragment : Fragment() {
         setInitialData()
     }
 
+    //TODO запрос не проходит
     private fun setInitialData(){
         arguments?.getString("player")?.let { viewModel.getViewPagerQuickPlayDetailsInfo(it) }
     }
