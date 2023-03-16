@@ -68,4 +68,9 @@ dependencies {
 
     implementation("com.squareup.okhttp3:logging-interceptor:$interceptor_version")
 
+    def fastAdapter = "5.7.0"
+
+    implementation ("com.mikepenz:fastadapter-extensions-expandable:$fastAdapter")
+    implementation ("com.mikepenz:fastadapter-extensions-binding:$fastAdapter")
+
 }

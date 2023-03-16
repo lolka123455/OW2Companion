@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 import com.game_modes.ow2companion.databinding.GamesModesItemBinding
 import com.game_modes.ow2companion.network.models.GameModesItem
 
-class GameModesAdapter : RecyclerView.Adapter<GameModesAdapter.GameModesViewHolder>() {
+class GameModesListAdapter : RecyclerView.Adapter<GameModesListAdapter.GameModesViewHolder>() {
 
     var gameModesList = listOf<GameModesItem>()
     set(value) {
