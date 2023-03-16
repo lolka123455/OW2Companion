@@ -10,6 +10,9 @@ import androidx.lifecycle.lifecycleScope
 import com.game_modes.ow2companion.adapter.GameModesListAdapter
 import com.game_modes.ow2companion.databinding.FragmentGameModesBinding
 import com.game_modes.ow2companion.viewmodels.GameModesViewModel
+import com.mikepenz.fastadapter.FastAdapter
+import com.mikepenz.fastadapter.adapters.ItemAdapter
+import com.mikepenz.fastadapter.diff.FastAdapterDiffUtil
 import kotlinx.coroutines.flow.filterNotNull
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -21,7 +24,8 @@ class GameModesFragment : Fragment() {
 
     private val viewModel: GameModesViewModel by viewModel()
 
-    private val adapter = GameModesListAdapter()
+    private val itemAdapter: ItemAdapter<GameModesListAdapter> = ItemAdapter()
+    private val recyclerViewAdapter = FastAdapter.with(itemAdapter)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,7 +38,7 @@ class GameModesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.gameModesRecyclerView.adapter = adapter
+        binding.gameModesRecyclerView.adapter = recyclerViewAdapter
         viewModel.getGameModes()
         observe()
     }
@@ -47,7 +51,9 @@ class GameModesFragment : Fragment() {
     private fun observeGameModes() {
         lifecycleScope.launchWhenStarted {
             viewModel.gameModesList.collect {
-                adapter.gameModesList = it
+                FastAdapterDiffUtil[itemAdapter] = it.map { gameModesItem ->
+                    GameModesListAdapter(gameModesItem)
+                }
             }
         }
     }

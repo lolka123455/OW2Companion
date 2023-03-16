@@ -2,48 +2,38 @@ package com.game_modes.ow2companion.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.game_modes.ow2companion.R
 import com.game_modes.ow2companion.databinding.GamesModesItemBinding
 import com.game_modes.ow2companion.network.models.GameModesItem
+import com.mikepenz.fastadapter.binding.AbstractBindingItem
 
-class GameModesListAdapter : RecyclerView.Adapter<GameModesListAdapter.GameModesViewHolder>() {
+class GameModesListAdapter(
+    private var gameModesItem: GameModesItem
+) : AbstractBindingItem<GamesModesItemBinding>() {
 
-    var gameModesList = listOf<GameModesItem>()
-    set(value) {
-        val callback = GameModesDiffUtil(gameModesList, value)
-        val diffResult = DiffUtil.calculateDiff(callback)
-        diffResult.dispatchUpdatesTo(this)
-        field = value
-    }
+    override val type: Int = R.layout.games_modes_item
 
-    class GameModesViewHolder(view: GamesModesItemBinding) : RecyclerView.ViewHolder(view.root) {
-        val binding = GamesModesItemBinding.bind(view.root)
-    }
+    override var identifier: Long = gameModesItem.hashCode().toLong()
 
-    override fun onBindViewHolder(holder: GameModesViewHolder, position: Int) {
-        bind(holder.binding, gameModesList[position])
-    }
+    override fun createBinding(
+        inflater: LayoutInflater,
+        parent: ViewGroup?
+    ): GamesModesItemBinding =
+        GamesModesItemBinding.inflate(inflater, parent, false)
 
-    private fun bind(binding: GamesModesItemBinding, gameModesItem: GameModesItem) {
+    override fun bindView(binding: GamesModesItemBinding, payloads: List<Any>) {
         binding.gameModeDescription.text = gameModesItem.description
         binding.gameModeTitle.text = gameModesItem.name
-
 
         Glide.with(binding.root)
             .load(gameModesItem.screenshot)
             .into(binding.gameModeImage)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = GameModesViewHolder(
-        GamesModesItemBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false
-        )
-    )
-
-    override fun getItemCount() = gameModesList.size
-
+    override fun unbindView(binding: GamesModesItemBinding) {
+        super.unbindView(binding)
+        binding.gameModeDescription.text = null
+        binding.gameModeTitle.text = null
+    }
 }
