@@ -4,7 +4,7 @@
     <string name="tab_damage">Damage</string>
     <string name="tab_support">Support</string>
 
-    <string-array name="tab_titles">
+    <string-array name="tab_titles_heroes">
         <item>@string/tab_tanks</item>
         <item>@string/tab_damage</item>
         <item>@string/tab_support</item>

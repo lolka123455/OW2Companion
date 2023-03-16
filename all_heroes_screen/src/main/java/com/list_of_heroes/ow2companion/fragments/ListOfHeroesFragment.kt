@@ -36,7 +36,7 @@ class ListOfHeroesFragment : Fragment() {
     }
 
     private fun initialViewPager() {
-        val titles = resources.getStringArray(R.array.tab_titles)
+        val titles = resources.getStringArray(R.array.tab_titles_heroes)
         val adapter = ViewPagerAdapter(requireActivity(), fragmentsList)
         binding.pager.adapter = adapter
         TabLayoutMediator(binding.tabLayout, binding.pager) { tabLayout, position ->
