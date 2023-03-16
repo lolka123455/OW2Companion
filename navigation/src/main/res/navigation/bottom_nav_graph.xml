@@ -65,5 +65,5 @@
     <fragment
         android:id="@+id/detailsHeroFragment"
         android:name="com.details_for_hero_screen.ow2companion.fragments.DetailsHeroFragment"
-        android:label="DetailsHeroFragment"></fragment>
+        android:label="DetailsHeroFragment" />
 </navigation>
