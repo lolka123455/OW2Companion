@@ -1,28 +1,32 @@
 package com.list_of_heroes.ow2companion.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.list_of_heroes.ow2companion.adapter.AllHeroesAdapter
+import com.list_of_heroes.ow2companion.adapter.AllHeroesFast
 import com.list_of_heroes.ow2companion.databinding.FragmentDamageBinding
 import com.list_of_heroes.ow2companion.network.models.AllHeroesItem
 import com.list_of_heroes.ow2companion.viewmodels.DamageHeroesViewModel
+import com.mikepenz.fastadapter.FastAdapter
+import com.mikepenz.fastadapter.adapters.ItemAdapter
+import com.mikepenz.fastadapter.diff.FastAdapterDiffUtil
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class DamageFragment : Fragment(), AllHeroesAdapter.HeroItemListener {
+class DamageFragment : Fragment(), AllHeroesFast.HeroItemListener {
 
     private val binding: FragmentDamageBinding
         get() = _binding!!
     private var _binding: FragmentDamageBinding? = null
 
-    private lateinit var adapter: AllHeroesAdapter
-
     private var listAllHeroes = listOf<AllHeroesItem>()
+
+    private val itemAdapter: ItemAdapter<AllHeroesFast> = ItemAdapter()
+    private val recyclerViewAdapter = FastAdapter.with(itemAdapter)
 
     private val viewModel: DamageHeroesViewModel by viewModel()
 
@@ -42,9 +46,8 @@ class DamageFragment : Fragment(), AllHeroesAdapter.HeroItemListener {
     }
 
     private fun setupRecyclerView() {
-        adapter = AllHeroesAdapter(this)
+        binding.gameModesRecyclerView.adapter = recyclerViewAdapter
         binding.gameModesRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        binding.gameModesRecyclerView.adapter = adapter
 
         observeAllHeroes()
     }
@@ -53,7 +56,9 @@ class DamageFragment : Fragment(), AllHeroesAdapter.HeroItemListener {
         lifecycleScope.launchWhenCreated {
             viewModel.allHeroesList.collect {
                 listAllHeroes = it
-                adapter.allHeroesList = listAllHeroes
+                FastAdapterDiffUtil[itemAdapter] = it.map { heroItem ->
+                    AllHeroesFast(heroItem, this@DamageFragment)
+                }
             }
         }
     }
