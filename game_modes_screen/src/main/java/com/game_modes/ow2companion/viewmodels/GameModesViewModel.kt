@@ -29,11 +29,10 @@ class GameModesViewModel(
     val serverResponse: StateFlow<String?> = _serverResponse
 
     fun getGameModes() {
-        viewModelScope.launch(Dispatchers.Main) {
+        viewModelScope.launch(Dispatchers.IO) {
             try {
                 val result = getAllGameModesUseCase.invoke()
                 _gameModesList.tryEmit(result)
-                _serverResponse.tryEmit("Game Modes Retrieved Successfully")
             } catch (e: Exception) {
                 handleException(e)
             }
