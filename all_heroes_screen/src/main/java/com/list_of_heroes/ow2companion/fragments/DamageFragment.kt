@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.list_of_heroes.ow2companion.adapter.AllHeroesFast
+import com.list_of_heroes.ow2companion.adapter.AllHeroesAdapterList
 import com.list_of_heroes.ow2companion.databinding.FragmentDamageBinding
 import com.list_of_heroes.ow2companion.network.models.AllHeroesItem
 import com.list_of_heroes.ow2companion.viewmodels.DamageHeroesViewModel
@@ -17,7 +17,7 @@ import com.mikepenz.fastadapter.adapters.ItemAdapter
 import com.mikepenz.fastadapter.diff.FastAdapterDiffUtil
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class DamageFragment : Fragment(), AllHeroesFast.HeroItemListener {
+class DamageFragment : Fragment(), AllHeroesAdapterList.HeroItemListener {
 
     private val binding: FragmentDamageBinding
         get() = _binding!!
@@ -25,7 +25,7 @@ class DamageFragment : Fragment(), AllHeroesFast.HeroItemListener {
 
     private var listAllHeroes = listOf<AllHeroesItem>()
 
-    private val itemAdapter: ItemAdapter<AllHeroesFast> = ItemAdapter()
+    private val itemAdapter: ItemAdapter<AllHeroesAdapterList> = ItemAdapter()
     private val recyclerViewAdapter = FastAdapter.with(itemAdapter)
 
     private val viewModel: DamageHeroesViewModel by viewModel()
@@ -56,9 +56,10 @@ class DamageFragment : Fragment(), AllHeroesFast.HeroItemListener {
         lifecycleScope.launchWhenCreated {
             viewModel.allHeroesList.collect {
                 listAllHeroes = it
-                FastAdapterDiffUtil[itemAdapter] = it.map { heroItem ->
-                    AllHeroesFast(heroItem, this@DamageFragment)
+                val heroes = it.map { heroItem ->
+                    AllHeroesAdapterList(heroItem, this@DamageFragment)
                 }
+                FastAdapterDiffUtil[itemAdapter] = heroes
             }
         }
     }
@@ -66,6 +67,10 @@ class DamageFragment : Fragment(), AllHeroesFast.HeroItemListener {
     override fun onClickedHero(heroName: String) {
         val bundle = Bundle()
         bundle.putString("key", heroName)
+        navigateToDetailsHeroFragment(bundle)
+    }
+
+    private fun navigateToDetailsHeroFragment(bundle: Bundle) {
         findNavController().navigate(
             com.navigation.ow2companion.R.id.action_listOfHeroesFragment_to_detailsHeroFragment,
             bundle

@@ -9,7 +9,7 @@ import com.list_of_heroes.ow2companion.databinding.HeroesItemBinding
 import com.list_of_heroes.ow2companion.network.models.AllHeroesItem
 import com.mikepenz.fastadapter.binding.AbstractBindingItem
 
-class AllHeroesFast(
+class AllHeroesAdapterList(
     private var heroesItem: AllHeroesItem,
     private val listener: HeroItemListener
 ) : AbstractBindingItem<HeroesItemBinding>(), View.OnClickListener {
