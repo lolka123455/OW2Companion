@@ -8,23 +8,27 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.list_of_heroes.ow2companion.adapter.AllHeroesAdapter
+import com.list_of_heroes.ow2companion.adapter.AllHeroesFast
 import com.list_of_heroes.ow2companion.databinding.FragmentTanksBinding
 import com.list_of_heroes.ow2companion.network.models.AllHeroesItem
 import com.list_of_heroes.ow2companion.viewmodels.TankHeroesViewModel
+import com.mikepenz.fastadapter.FastAdapter
+import com.mikepenz.fastadapter.adapters.ItemAdapter
+import com.mikepenz.fastadapter.diff.FastAdapterDiffUtil
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class TanksFragment : Fragment(), AllHeroesAdapter.HeroItemListener {
+class TanksFragment : Fragment(), AllHeroesFast.HeroItemListener {
 
     private val binding: FragmentTanksBinding
         get() = _binding!!
     private var _binding: FragmentTanksBinding? = null
 
-    private lateinit var adapter: AllHeroesAdapter
-
     private var listAllHeroes = listOf<AllHeroesItem>()
 
     private val viewModel: TankHeroesViewModel by viewModel()
+
+    private val itemAdapter: ItemAdapter<AllHeroesFast> = ItemAdapter()
+    private val recyclerViewAdapter = FastAdapter.with(itemAdapter)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,9 +46,8 @@ class TanksFragment : Fragment(), AllHeroesAdapter.HeroItemListener {
     }
 
     private fun setupRecyclerView() {
-        adapter = AllHeroesAdapter(this)
+        binding.gameModesRecyclerView.adapter = recyclerViewAdapter
         binding.gameModesRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        binding.gameModesRecyclerView.adapter = adapter
 
         observeAllHeroes()
     }
@@ -53,7 +56,9 @@ class TanksFragment : Fragment(), AllHeroesAdapter.HeroItemListener {
         lifecycleScope.launchWhenCreated {
             viewModel.allHeroesList.collect {
                 listAllHeroes = it
-                adapter.allHeroesList = listAllHeroes
+                FastAdapterDiffUtil[itemAdapter] =it.map { heroItem ->
+                    AllHeroesFast(heroItem, this@TanksFragment)
+                }
             }
         }
     }
