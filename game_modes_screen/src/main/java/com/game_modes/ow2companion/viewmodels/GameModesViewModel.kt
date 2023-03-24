@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
+import java.io.IOException
 
 class GameModesViewModel(
     private val getAllGameModesUseCase: GetAllGameModesListUseCase
@@ -28,35 +29,42 @@ class GameModesViewModel(
     val serverResponse: StateFlow<String?> = _serverResponse
 
     fun getGameModes() {
-        viewModelScope.launch(Dispatchers.Main) {
+        viewModelScope.launch(Dispatchers.IO) {
             try {
                 val result = getAllGameModesUseCase.invoke()
                 _gameModesList.tryEmit(result)
-            } catch (e: HttpException) {
+            } catch (e: Exception) {
+                handleException(e)
+            }
+        }
+    }
+
+    private fun handleException(e: Exception) {
+        when (e) {
+            is HttpException -> {
                 val errorMessage = when (e.code()) {
                     422 -> {
-                        // Handle validation errors
                         val errorBody = e.response()?.errorBody()?.string()
                         val validationError =
                             Gson().fromJson(errorBody, ValidationError::class.java)
                         "Validation Error: ${validationError.detail}"
                     }
                     500 -> {
-                        // Handle internal server errors
                         "Internal Server Error: ${e.message()}"
                     }
                     504 -> {
-                        // Handle Blizzard server errors
                         "Blizzard Server Error: ${e.message()}"
                     }
                     else -> {
-                        // Handle other server errors
                         "Server Error: ${e.message()}"
                     }
                 }
                 _serverResponse.tryEmit(errorMessage)
-            } catch (e: Exception) {
-                e.printStackTrace()
+            }
+            is IOException -> {
+                _serverResponse.tryEmit("Network Error: ${e.message}")
+            }
+            else -> {
                 _serverResponse.tryEmit("Error: ${e.message}")
             }
         }
@@ -64,6 +72,7 @@ class GameModesViewModel(
 
     // Add a function to clear the server response state flow
     internal fun clearServerResponse() {
+        //Clears the current state of _serverResponse
         _serverResponse.tryEmit(null)
     }
 
