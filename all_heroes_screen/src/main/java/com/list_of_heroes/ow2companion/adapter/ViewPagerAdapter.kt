@@ -8,7 +8,11 @@ class ViewPagerAdapter(
     fragment: FragmentActivity, private val list: List<Fragment>
 ) : FragmentStateAdapter(fragment) {
 
-    override fun getItemCount() = list.size
+    override fun getItemCount(): Int = list.size
 
-    override fun createFragment(position: Int) = list[position]
+    override fun createFragment(position: Int): Fragment = list[position]
+
+    override fun containsItem(itemId: Long): Boolean {
+        return list.any { it.hashCode().toLong() == itemId }
+    }
 }
