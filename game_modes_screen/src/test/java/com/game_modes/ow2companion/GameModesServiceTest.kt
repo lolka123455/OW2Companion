@@ -2,6 +2,7 @@ package com.game_modes.ow2companion
 
 import com.game_modes.ow2companion.network.api.GameModesService
 import junit.framework.TestCase.assertEquals
+import junit.framework.TestCase.assertNotNull
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
@@ -29,5 +30,12 @@ class GameModesServiceTest {
         val gameModes = gameModesService.getGameModes()
 
         assertEquals(gameModes.size, 8)
+
+        for (gameMode in gameModes) {
+            assertNotNull(gameMode.description)
+            assertNotNull(gameMode.icon)
+            assertNotNull(gameMode.name)
+            assertNotNull(gameMode.screenshot)
+        }
     }
 }
