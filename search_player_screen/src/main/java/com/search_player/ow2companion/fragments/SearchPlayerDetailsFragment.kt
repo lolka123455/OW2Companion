@@ -110,21 +110,24 @@ class SearchPlayerDetailsFragment : Fragment(), SearchPlayerDetailsAdapter.Playe
     private fun observeSimilarPlayersFounded() {
         lifecycleScope.launchWhenCreated {
             viewModel.similarPlayersFounded.collect {
-                similarPlayersList = it
-                adapter.allHeroesList = similarPlayersList
+                adapter.allHeroesList = it
             }
         }
     }
-
 
     // Тут мы берем то что вписал пользователь применяем changeMinusToHash и прокидываем
     override fun onClickedPlayer(playerName: String) {
         val bundle = Bundle()
         val inputText = binding.etSearchNamePlayer.text.toString().trim()
         val modifiedName = changeMinusToHash(inputText)
-        bundle.putString("player",modifiedName)
+        bundle.putString("player", modifiedName)
+        navigateToPersonalPlayerInfoDetailsFragment(bundle)
+    }
+
+    private fun navigateToPersonalPlayerInfoDetailsFragment(bundle: Bundle) {
         findNavController().navigate(
-            com.navigation.ow2companion.R.id.action_searchPlayerDetailsFragment_to_personalPlayerInfoDetailsFragment,
+            com.navigation.ow2companion
+                .R.id.action_searchPlayerDetailsFragment_to_personalPlayerInfoDetailsFragment,
             bundle
         )
     }
