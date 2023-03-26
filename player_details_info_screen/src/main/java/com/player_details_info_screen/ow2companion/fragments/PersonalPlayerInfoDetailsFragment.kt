@@ -42,8 +42,9 @@ class PersonalPlayerInfoDetailsFragment : Fragment() {
 
     // TODO время персов прилетает в секундах
 
-    fun setInitialData() {
-        val player = arguments?.getString("player") ?: throw IllegalArgumentException("Missing player argument")
+    private fun setInitialData() {
+        val player = arguments?.getString("player")
+            ?: throw IllegalArgumentException("Missing player argument")
         viewModelTitleInfo.getTitleExactFoundPlayerBasicInfo(player)
     }
 
@@ -61,7 +62,10 @@ class PersonalPlayerInfoDetailsFragment : Fragment() {
             tabLayout.text = titles[position]
         }.attach()
 
-        // Set data in the fragments
+        setArgumentsToFragments()
+    }
+
+    private fun setArgumentsToFragments() {
         fragmentsList.forEach { fragment ->
             val bundle = Bundle()
             bundle.putString("player", arguments?.getString("player"))

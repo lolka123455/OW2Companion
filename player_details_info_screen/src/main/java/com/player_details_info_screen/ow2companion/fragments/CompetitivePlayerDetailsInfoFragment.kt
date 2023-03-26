@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.player_details_info_screen.ow2companion.databinding.FragmentCompetitivePlayerDetailsInfoBinding
@@ -36,7 +37,16 @@ class CompetitivePlayerDetailsInfoFragment : Fragment() {
     }
 
     private fun setInitialData() {
-        arguments?.getString("player")?.let { viewModel.getViewPagerCompetitiveDetailsInfo(it) }
+        arguments?.getString("player")?.let { player ->
+            viewModel.getViewPagerCompetitiveDetailsInfo(player)
+        } ?: run {
+            showErrorMessage("No player was found!")
+        }
+    }
+
+    private fun showErrorMessage(errorMessage: String) {
+        Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
+        requireActivity().onNavigateUp()
     }
 
     private fun observe() {
@@ -55,7 +65,7 @@ class CompetitivePlayerDetailsInfoFragment : Fragment() {
 
         with(binding) {
             quantityGamesPlayed.text = item.general.games_played.toString()
-            quantityTimePlayed.text = item.general.time_played.toString()
+            quantityTimePlayed.text = item.general.time_played.formatSecondsToHHMMSS()
             quantityWinrate.text = item.general.winrate.toString()
             quantityKda.text = item.general.kda.toString()
             quantityEliminations.text = item.general.total.eliminations.toString()
@@ -65,6 +75,16 @@ class CompetitivePlayerDetailsInfoFragment : Fragment() {
             quantityHealing.text = item.general.total.healing.toString()
         }
 
+    }
+
+    private fun Int.formatSecondsToHHMMSS(): String {
+        val seconds = this % 60
+        val minutes = (this % 3600) / 60
+        val hours = this / 3600
+        return if (hours > 0)
+            String.format("%02d:%02d:%02d", hours, minutes, seconds)
+        else
+            String.format("%02d:%02d", minutes, seconds)
     }
 
 }
