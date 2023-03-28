@@ -1,7 +1,7 @@
-package com.game_modes.ow2companion
+package com.gameModes.ow2companion
 
-import com.game_modes.ow2companion.adapter.GameModesListAdapter
-import com.game_modes.ow2companion.network.models.GameModesItem
+import com.gameModes.ow2companion.adapter.GameModesListAdapter
+import com.gameModes.ow2companion.network.models.GameModesItem
 import junit.framework.TestCase.assertEquals
 import org.junit.Before
 import org.junit.Test

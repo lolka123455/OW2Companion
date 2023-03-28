@@ -1,7 +1,7 @@
-package com.game_modes.ow2companion.repository
+package com.gameModes.ow2companion.repository
 
-import com.game_modes.ow2companion.network.api.GameModesService
-import com.game_modes.ow2companion.network.models.GameModesItem
+import com.gameModes.ow2companion.network.api.GameModesService
+import com.gameModes.ow2companion.network.models.GameModesItem
 
 class GameModesRepositoryImpl(
     private val gameModesService: GameModesService

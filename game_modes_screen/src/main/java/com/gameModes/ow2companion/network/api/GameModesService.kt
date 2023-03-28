@@ -1,6 +1,6 @@
-package com.game_modes.ow2companion.network.api
+package com.gameModes.ow2companion.network.api
 
-import com.game_modes.ow2companion.network.models.GameModesItem
+import com.gameModes.ow2companion.network.models.GameModesItem
 import retrofit2.http.GET
 
 interface GameModesService {

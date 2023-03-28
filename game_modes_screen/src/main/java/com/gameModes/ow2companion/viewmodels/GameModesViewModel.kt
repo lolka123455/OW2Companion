@@ -1,17 +1,16 @@
-package com.game_modes.ow2companion.viewmodels
+package com.gameModes.ow2companion.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.game_modes.ow2companion.network.models.GameModesItem
-import com.game_modes.ow2companion.usecases.GetAllGameModesListUseCase
+import com.gameModes.ow2companion.network.models.GameModesItem
+import com.gameModes.ow2companion.usecases.GetAllGameModesListUseCase
 import com.google.gson.Gson
+import java.io.IOException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
-import java.io.IOException
 
 class GameModesViewModel(
     private val getAllGameModesUseCase: GetAllGameModesListUseCase
@@ -72,7 +71,7 @@ class GameModesViewModel(
 
     // Add a function to clear the server response state flow
     internal fun clearServerResponse() {
-        //Clears the current state of _serverResponse
+        // Clears the current state of _serverResponse
         _serverResponse.tryEmit(null)
     }
 
@@ -80,5 +79,4 @@ class GameModesViewModel(
         super.onCleared()
         clearServerResponse()
     }
-
 }

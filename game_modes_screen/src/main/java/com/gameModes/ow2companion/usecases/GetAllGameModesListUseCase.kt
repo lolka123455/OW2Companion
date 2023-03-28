@@ -1,6 +1,6 @@
-package com.game_modes.ow2companion.usecases
+package com.gameModes.ow2companion.usecases
 
-import com.game_modes.ow2companion.repository.GameModesRepository
+import com.gameModes.ow2companion.repository.GameModesRepository
 
 class GetAllGameModesListUseCase(private val gameModesRepository: GameModesRepository) {
 

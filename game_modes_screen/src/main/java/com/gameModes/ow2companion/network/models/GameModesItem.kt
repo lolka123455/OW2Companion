@@ -1,4 +1,4 @@
-package com.game_modes.ow2companion.network.models
+package com.gameModes.ow2companion.network.models
 
 data class GameModesItem(
     val description: String,

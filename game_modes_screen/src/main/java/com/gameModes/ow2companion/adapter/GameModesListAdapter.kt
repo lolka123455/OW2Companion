@@ -1,11 +1,11 @@
-package com.game_modes.ow2companion.adapter
+package com.gameModes.ow2companion.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
-import com.game_modes.ow2companion.R
-import com.game_modes.ow2companion.databinding.GamesModesItemBinding
-import com.game_modes.ow2companion.network.models.GameModesItem
+import com.gameModes.ow2companion.R
+import com.gameModes.ow2companion.databinding.GamesModesItemBinding
+import com.gameModes.ow2companion.network.models.GameModesItem
 import com.mikepenz.fastadapter.binding.AbstractBindingItem
 
 class GameModesListAdapter(

@@ -48,7 +48,7 @@
     </fragment>
     <fragment
         android:id="@+id/gameModesFragment"
-        android:name="com.game_modes.ow2companion.fragments.GameModesFragment"
+        android:name="com.gameModes.ow2companion.fragments.GameModesFragment"
         android:label="GameModesFragment" />
     <fragment
         android:id="@+id/tanksFragment"

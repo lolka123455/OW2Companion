@@ -1,6 +1,6 @@
-package com.game_modes.ow2companion
+package com.gameModes.ow2companion
 
-import com.game_modes.ow2companion.network.api.GameModesService
+import com.gameModes.ow2companion.network.api.GameModesService
 import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertNotNull
 import kotlinx.coroutines.runBlocking

@@ -1,4 +1,4 @@
-package com.game_modes.ow2companion.fragments
+package com.gameModes.ow2companion.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import com.game_modes.ow2companion.adapter.GameModesListAdapter
-import com.game_modes.ow2companion.databinding.FragmentGameModesBinding
-import com.game_modes.ow2companion.network.models.GameModesItem
-import com.game_modes.ow2companion.viewmodels.GameModesViewModel
+import com.gameModes.ow2companion.adapter.GameModesListAdapter
+import com.gameModes.ow2companion.databinding.FragmentGameModesBinding
+import com.gameModes.ow2companion.network.models.GameModesItem
+import com.gameModes.ow2companion.viewmodels.GameModesViewModel
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
 import com.mikepenz.fastadapter.diff.FastAdapterDiffUtil
@@ -103,5 +103,4 @@ class GameModesFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 }
