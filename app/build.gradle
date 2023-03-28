@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id "org.jlleitschuh.gradle.ktlint" version "11.3.1"
 }
 
 android {
@@ -35,6 +36,14 @@ android {
     }
 }
 
+tasks.getByPath("preBuild").dependsOn("ktlintFormat")
+
+ktlint {
+    android = true
+    ignoreFailures = true
+    disabledRules = ["no-wildcard-imports", "final-newline"]
+}
+
 dependencies {
 
     implementation project(":search_player_screen")
@@ -44,7 +53,6 @@ dependencies {
     implementation project(":details_for_hero_screen")
     implementation project(":state_screen")
     implementation project(":player_details_info_screen")
-
 
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'

@@ -6,7 +6,7 @@
     app:startDestination="@id/searchPlayerFragment">
     <fragment
         android:id="@+id/searchPlayerFragment"
-        android:name="com.search_player.ow2companion.fragments.SearchPlayerFragment"
+        android:name="com.searchPlayer.ow2companion.fragments.SearchPlayerFragment"
         android:label="SearchPlayerFragment">
         <action
             android:id="@+id/action_searchPlayerFragment_to_searchPlayerDetailsFragment"
@@ -15,7 +15,7 @@
 
     <fragment
         android:id="@+id/searchPlayerDetailsFragment"
-        android:name="com.search_player.ow2companion.fragments.SearchPlayerDetailsFragment"
+        android:name="com.searchPlayer.ow2companion.fragments.SearchPlayerDetailsFragment"
         android:label="SearchPlayerFragment"
         tools:ignore="ExtraText">>
         <action
@@ -25,22 +25,22 @@
 
     <fragment
         android:id="@+id/personalPlayerInfoDetailsFragment"
-        android:name="com.player_details_info_screen.ow2companion.fragments.PersonalPlayerInfoDetailsFragment"
+        android:name="com.playerDetailsInfoScreen.ow2companion.fragments.PersonalPlayerInfoDetailsFragment"
         android:label="PersonalPlayerInfoDetailsPlayerFragment" />
 
     <fragment
         android:id="@+id/quickPlayPlayerDetailsInfoFragment"
-        android:name="com.player_details_info_screen.ow2companion.fragments.QuickPlayPlayerDetailsInfoFragment"
+        android:name="com.playerDetailsInfoScreen.ow2companion.fragments.QuickPlayPlayerDetailsInfoFragment"
         android:label="QuickPlayPlayerDetailsInfoFragment" />
 
     <fragment
         android:id="@+id/competitivePlayPlayerDetailsInfoFragment"
-        android:name="com.player_details_info_screen.ow2companion.fragments.CompetitivePlayerDetailsInfoFragment"
+        android:name="com.playerDetailsInfoScreen.ow2companion.fragments.CompetitivePlayerDetailsInfoFragment"
         android:label="CompetitivePlayerDetailsInfoFragment" />
 
     <fragment
         android:id="@+id/listOfHeroesFragment"
-        android:name="com.list_of_heroes.ow2companion.fragments.ListOfHeroesFragment"
+        android:name="com.allHeroesList.ow2companion.fragments.ListOfHeroesFragment"
         android:label="ListOfHeroesFragment">
         <action
             android:id="@+id/action_listOfHeroesFragment_to_detailsHeroFragment"
@@ -48,22 +48,22 @@
     </fragment>
     <fragment
         android:id="@+id/gameModesFragment"
-        android:name="com.game_modes.ow2companion.fragments.GameModesFragment"
+        android:name="com.gameModes.ow2companion.fragments.GameModesFragment"
         android:label="GameModesFragment" />
     <fragment
         android:id="@+id/tanksFragment"
-        android:name="com.list_of_heroes.ow2companion.fragments.TanksFragment"
+        android:name="com.allHeroesList.ow2companion.fragments.TanksFragment"
         android:label="TanksFragment" />
     <fragment
         android:id="@+id/damageFragment"
-        android:name="com.list_of_heroes.ow2companion.fragments.DamageFragment"
+        android:name="com.allHeroesList.ow2companion.fragments.DamageFragment"
         android:label="DamageFragment" />
     <fragment
         android:id="@+id/supportFragment"
-        android:name="com.list_of_heroes.ow2companion.fragments.SupportFragment"
+        android:name="com.allHeroesList.ow2companion.fragments.SupportFragment"
         android:label="SupportFragment" />
     <fragment
         android:id="@+id/detailsHeroFragment"
-        android:name="com.details_for_hero_screen.ow2companion.fragments.DetailsHeroFragment"
+        android:name="com.detailsForHeroScreen.ow2companion.fragments.DetailsHeroFragment"
         android:label="DetailsHeroFragment" />
 </navigation>
