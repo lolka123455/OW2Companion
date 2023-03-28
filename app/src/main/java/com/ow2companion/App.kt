@@ -5,7 +5,7 @@ import com.allHeroesList.ow2companion.di.AllHeroesModule
 import com.detailsForHeroScreen.ow2companion.di.DetailsHeroModule
 import com.gameModes.ow2companion.di.GameModesModule
 import com.playerDetailsInfoScreen.ow2companion.di.PlayerDetailsInfoModule
-import com.search_player.ow2companion.di.SearchPlayerModule
+import com.searchPlayer.ow2companion.di.SearchPlayerModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin

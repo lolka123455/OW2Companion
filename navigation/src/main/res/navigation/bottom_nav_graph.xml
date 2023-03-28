@@ -6,7 +6,7 @@
     app:startDestination="@id/searchPlayerFragment">
     <fragment
         android:id="@+id/searchPlayerFragment"
-        android:name="com.search_player.ow2companion.fragments.SearchPlayerFragment"
+        android:name="com.searchPlayer.ow2companion.fragments.SearchPlayerFragment"
         android:label="SearchPlayerFragment">
         <action
             android:id="@+id/action_searchPlayerFragment_to_searchPlayerDetailsFragment"
@@ -15,7 +15,7 @@
 
     <fragment
         android:id="@+id/searchPlayerDetailsFragment"
-        android:name="com.search_player.ow2companion.fragments.SearchPlayerDetailsFragment"
+        android:name="com.searchPlayer.ow2companion.fragments.SearchPlayerDetailsFragment"
         android:label="SearchPlayerFragment"
         tools:ignore="ExtraText">>
         <action
