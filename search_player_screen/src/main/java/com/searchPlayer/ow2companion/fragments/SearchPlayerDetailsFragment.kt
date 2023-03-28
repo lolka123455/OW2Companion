@@ -42,9 +42,9 @@ class SearchPlayerDetailsFragment : Fragment(), SearchPlayerDetailsAdapter.Playe
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        onBackPressedToSearchPlayer()
+        setBackButtonClickListener()
         setupRecyclerView()
-        watchSearchText()
+        observeSearchTextChanges()
     }
 
     private fun setupRecyclerView() {
@@ -52,11 +52,11 @@ class SearchPlayerDetailsFragment : Fragment(), SearchPlayerDetailsAdapter.Playe
         binding.rvFoundedPlayer.layoutManager = LinearLayoutManager(requireContext())
         binding.rvFoundedPlayer.adapter = adapter
 
-        observeSimilarPlayersFounded()
+        observeAndSetSimilarPlayers()
     }
 
     private fun setInitialData(name: String) {
-        val modifiedName = changeMinusToHash(name)
+        val modifiedName = changeHashToMinus(name)
         viewModel.getSimilarPlayersFounded(modifiedName)
     }
 
@@ -66,21 +66,20 @@ class SearchPlayerDetailsFragment : Fragment(), SearchPlayerDetailsAdapter.Playe
      * @param input The string to modify.
      * @return A new string with all '#' replaced by '-'.
      */
-    private fun changeMinusToHash(input: String): String {
+    private fun changeHashToMinus(input: String): String {
         return input.replace("#", "-")
     }
 
-    private fun watchSearchText() {
+    private fun observeSearchTextChanges() {
         binding.etSearchNamePlayer.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 val searchText = s?.toString()?.trim()
                 if (searchText.isNullOrEmpty()) {
-                    // Clear the list when the search text is empty
-                    adapter.allHeroesList = emptyList()
+                    clearList()
                 } else {
-                    handleNonEmptySearchText(searchText)
+                    handleSearchText(searchText)
                 }
             }
 
@@ -88,7 +87,11 @@ class SearchPlayerDetailsFragment : Fragment(), SearchPlayerDetailsAdapter.Playe
         })
     }
 
-    private fun handleNonEmptySearchText(searchText: String) {
+    private fun clearList() {
+        adapter.allHeroesList = emptyList()
+    }
+
+    private fun handleSearchText(searchText: String) {
         if (searchText != lastSearchQuery) {
             // Fetch new data only if the search query has changed
             fetchNewData(searchText)
@@ -107,7 +110,7 @@ class SearchPlayerDetailsFragment : Fragment(), SearchPlayerDetailsAdapter.Playe
         adapter.allHeroesList = similarPlayersList
     }
 
-    private fun observeSimilarPlayersFounded() {
+    private fun observeAndSetSimilarPlayers() {
         lifecycleScope.launchWhenCreated {
             viewModel.similarPlayersFounded.collect {
                 adapter.allHeroesList = it
@@ -119,7 +122,7 @@ class SearchPlayerDetailsFragment : Fragment(), SearchPlayerDetailsAdapter.Playe
     override fun onClickedPlayer(playerName: String) {
         val bundle = Bundle()
         val inputText = binding.etSearchNamePlayer.text.toString().trim()
-        val modifiedName = changeMinusToHash(inputText)
+        val modifiedName = changeHashToMinus(inputText)
         bundle.putString("player", modifiedName)
         navigateToPersonalPlayerInfoDetailsFragment(bundle)
     }
@@ -132,7 +135,7 @@ class SearchPlayerDetailsFragment : Fragment(), SearchPlayerDetailsAdapter.Playe
         )
     }
 
-    private fun onBackPressedToSearchPlayer() {
+    private fun setBackButtonClickListener() {
         binding.ibBack.setOnClickListener {
             findNavController().navigateUp()
         }
