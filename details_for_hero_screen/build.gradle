@@ -37,7 +37,7 @@ tasks.getByPath("preBuild").dependsOn("ktlintFormat")
 
 ktlint {
     android = true
-    ignoreFailures = true
+    ignoreFailures = false
     disabledRules = ["no-wildcard-imports", "final-newline"]
 }
 

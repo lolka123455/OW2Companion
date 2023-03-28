@@ -28,7 +28,9 @@ class SearchPlayerDetailsAdapter(private val listener: PlayerItemListener) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AllHeroesViewHolder {
         val binding: SearchPlayerDetailsItemBinding = SearchPlayerDetailsItemBinding.inflate(
-            LayoutInflater.from(parent.context), parent, false
+            LayoutInflater.from(parent.context),
+            parent,
+            false
         )
         return AllHeroesViewHolder(binding, listener)
     }
