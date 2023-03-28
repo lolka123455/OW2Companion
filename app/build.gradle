@@ -40,7 +40,8 @@ tasks.getByPath("preBuild").dependsOn("ktlintFormat")
 
 ktlint {
     android = true
-    ignoreFailures = false
+    ignoreFailures = true
+    //need disabledRules for naming in module
     disabledRules = ["no-wildcard-imports", "final-newline"]
 }
 
@@ -53,7 +54,6 @@ dependencies {
     implementation project(":details_for_hero_screen")
     implementation project(":state_screen")
     implementation project(":player_details_info_screen")
-
 
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'

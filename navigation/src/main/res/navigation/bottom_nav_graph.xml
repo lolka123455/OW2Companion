@@ -40,7 +40,7 @@
 
     <fragment
         android:id="@+id/listOfHeroesFragment"
-        android:name="com.list_of_heroes.ow2companion.fragments.ListOfHeroesFragment"
+        android:name="com.allHeroesList.ow2companion.fragments.ListOfHeroesFragment"
         android:label="ListOfHeroesFragment">
         <action
             android:id="@+id/action_listOfHeroesFragment_to_detailsHeroFragment"
@@ -52,15 +52,15 @@
         android:label="GameModesFragment" />
     <fragment
         android:id="@+id/tanksFragment"
-        android:name="com.list_of_heroes.ow2companion.fragments.TanksFragment"
+        android:name="com.allHeroesList.ow2companion.fragments.TanksFragment"
         android:label="TanksFragment" />
     <fragment
         android:id="@+id/damageFragment"
-        android:name="com.list_of_heroes.ow2companion.fragments.DamageFragment"
+        android:name="com.allHeroesList.ow2companion.fragments.DamageFragment"
         android:label="DamageFragment" />
     <fragment
         android:id="@+id/supportFragment"
-        android:name="com.list_of_heroes.ow2companion.fragments.SupportFragment"
+        android:name="com.allHeroesList.ow2companion.fragments.SupportFragment"
         android:label="SupportFragment" />
     <fragment
         android:id="@+id/detailsHeroFragment"

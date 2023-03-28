@@ -1,10 +1,11 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id "org.jlleitschuh.gradle.ktlint" version "11.3.1"
 }
 
 android {
-    namespace 'com.list_of_heroes.ow2companion'
+    namespace 'com.allHeroesList.ow2companion'
     compileSdk 33
 
     defaultConfig {
@@ -32,6 +33,13 @@ android {
     }
 }
 
+tasks.getByPath("preBuild").dependsOn("ktlintFormat")
+
+ktlint {
+    android = true
+    ignoreFailures = false
+    disabledRules = ["no-wildcard-imports", "final-newline"]
+}
 dependencies {
 
     implementation project(":navigation")
