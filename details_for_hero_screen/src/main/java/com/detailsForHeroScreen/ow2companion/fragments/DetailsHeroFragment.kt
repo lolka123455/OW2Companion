@@ -1,4 +1,4 @@
-package com.details_for_hero_screen.ow2companion.fragments
+package com.detailsForHeroScreen.ow2companion.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,9 +8,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
-import com.details_for_hero_screen.ow2companion.databinding.FragmentDetailsHeroBinding
-import com.details_for_hero_screen.ow2companion.network.models.DetailsInfoHero
-import com.details_for_hero_screen.ow2companion.viewmodels.DetailsHeroViewModel
+import com.detailsForHeroScreen.ow2companion.databinding.FragmentDetailsHeroBinding
+import com.detailsForHeroScreen.ow2companion.network.models.DetailsInfoHero
+import com.detailsForHeroScreen.ow2companion.viewmodels.DetailsHeroViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailsHeroFragment : Fragment() {
@@ -48,13 +48,13 @@ class DetailsHeroFragment : Fragment() {
         requireActivity().onNavigateUp()
     }
 
-    private fun observe(){
+    private fun observe() {
         observeHeroBasicInformation()
     }
 
-    private fun observeHeroBasicInformation(){
+    private fun observeHeroBasicInformation() {
         lifecycleScope.launchWhenStarted {
-            viewModel.detailsHero.collect{setHeroBasicInformation(it)}
+            viewModel.detailsHero.collect { setHeroBasicInformation(it) }
         }
     }
 

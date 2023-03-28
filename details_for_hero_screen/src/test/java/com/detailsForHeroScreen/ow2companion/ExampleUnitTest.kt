@@ -1,8 +1,7 @@
-package com.details_for_hero_screen.ow2companion
-
-import org.junit.Test
+package com.detailsForHeroScreen.ow2companion
 
 import org.junit.Assert.*
+import org.junit.Test
 
 /**
  * Example local unit test, which will execute on the development machine (host).

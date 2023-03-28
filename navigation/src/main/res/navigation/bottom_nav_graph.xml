@@ -64,6 +64,6 @@
         android:label="SupportFragment" />
     <fragment
         android:id="@+id/detailsHeroFragment"
-        android:name="com.details_for_hero_screen.ow2companion.fragments.DetailsHeroFragment"
+        android:name="com.detailsForHeroScreen.ow2companion.fragments.DetailsHeroFragment"
         android:label="DetailsHeroFragment" />
 </navigation>

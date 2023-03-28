@@ -1,9 +1,9 @@
-package com.details_for_hero_screen.ow2companion.viewmodels
+package com.detailsForHeroScreen.ow2companion.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.details_for_hero_screen.ow2companion.network.models.DetailsInfoHero
-import com.details_for_hero_screen.ow2companion.usecases.GetFullDetailsForHeroUseCase
+import com.detailsForHeroScreen.ow2companion.network.models.DetailsInfoHero
+import com.detailsForHeroScreen.ow2companion.usecases.GetFullDetailsForHeroUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -14,7 +14,7 @@ class DetailsHeroViewModel(
 ) : ViewModel() {
 
     private val _detailsHero = MutableStateFlow<DetailsInfoHero?>(null)
-    val detailsHero : StateFlow<DetailsInfoHero?> = _detailsHero
+    val detailsHero: StateFlow<DetailsInfoHero?> = _detailsHero
 
     fun getDetailsHero(name: String) {
         viewModelScope.launch(Dispatchers.IO) {

@@ -2,7 +2,7 @@ package com.ow2companion
 
 import android.app.Application
 import com.allHeroesList.ow2companion.di.AllHeroesModule
-import com.details_for_hero_screen.ow2companion.di.DetailsHeroModule
+import com.detailsForHeroScreen.ow2companion.di.DetailsHeroModule
 import com.game_modes.ow2companion.di.GameModesModule
 import com.player_details_info_screen.ow2companion.di.PlayerDetailsInfoModule
 import com.search_player.ow2companion.di.SearchPlayerModule
