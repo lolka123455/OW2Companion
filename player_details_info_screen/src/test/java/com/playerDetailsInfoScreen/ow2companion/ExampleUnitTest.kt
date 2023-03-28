@@ -1,4 +1,4 @@
-package com.navigation.ow2companion
+package com.playerDetailsInfoScreen.ow2companion
 
 import org.junit.Assert.*
 import org.junit.Test
