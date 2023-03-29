@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.detailsForHeroScreen.ow2companion.databinding.FragmentDetailsHeroBinding
 import com.detailsForHeroScreen.ow2companion.network.models.DetailsInfoHero
 import com.detailsForHeroScreen.ow2companion.viewmodels.DetailsHeroViewModel
+import kotlinx.coroutines.flow.filterNotNull
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailsHeroFragment : Fragment() {
@@ -50,6 +51,7 @@ class DetailsHeroFragment : Fragment() {
 
     private fun observe() {
         observeHeroBasicInformation()
+        observeServerResponse()
     }
 
     private fun observeHeroBasicInformation() {
@@ -87,23 +89,36 @@ class DetailsHeroFragment : Fragment() {
         }
     }
 
+    /**
+     * Updates the UI with the hero story information.
+     *
+     * This function updates the text views in the UI with the title and content
+     * of each chapter in the hero's story. If there are fewer chapters than text views,
+     * the remaining text views are hidden.
+     *
+     * @param detailsInfoHero The [DetailsInfoHero] object containing the hero's story information.
+     */
+
     private fun setHeroStory(detailsInfoHero: DetailsInfoHero) {
         with(binding) {
-            tvHeroTitleStory1.text = detailsInfoHero.story.chapters[0].title
-            tvHeroStory1.text = detailsInfoHero.story.chapters[0].content
+            val chapterViews = listOf(
+                Pair(tvHeroTitleStory1, tvHeroStory1),
+                Pair(tvHeroTitleStory2, tvHeroStory2),
+                Pair(tvHeroTitleStory3, tvHeroStory3)
+            )
 
-            tvHeroTitleStory2.text = detailsInfoHero.story.chapters[1].title
-            tvHeroStory2.text = detailsInfoHero.story.chapters[1].content
+            detailsInfoHero.story.chapters.forEachIndexed { index, chapter ->
+                if (index < chapterViews.size) {
+                    chapterViews[index].first.text = chapter.title
+                    chapterViews[index].second.text = chapter.content
+                }
+            }
 
-            // check if there are at least 3 chapters in the story
-            if (detailsInfoHero.story.chapters.size >= 3) {
-                // if there are, show the third chapter title and content
-                tvHeroTitleStory3.text = detailsInfoHero.story.chapters[2].title
-                tvHeroStory3.text = detailsInfoHero.story.chapters[2].content
-            } else {
-                // otherwise, hide the third chapter title and content
-                tvHeroTitleStory3.visibility = View.GONE
-                tvHeroStory3.visibility = View.GONE
+            if (detailsInfoHero.story.chapters.size < chapterViews.size) {
+                for (i in detailsInfoHero.story.chapters.size until chapterViews.size) {
+                    chapterViews[i].first.visibility = View.GONE
+                    chapterViews[i].second.visibility = View.GONE
+                }
             }
         }
     }
@@ -112,6 +127,21 @@ class DetailsHeroFragment : Fragment() {
         Glide.with(binding.root)
             .load(detailsInfoHero.portrait)
             .into(binding.ivHeroImage)
+    }
+
+    private fun observeServerResponse() {
+        lifecycleScope.launchWhenStarted {
+            viewModel.serverResponse
+                .filterNotNull()
+                .collect { response ->
+                    displayServerResponse(response)
+                    viewModel.clearServerResponse()
+                }
+        }
+    }
+
+    private fun displayServerResponse(response: String) {
+        Toast.makeText(requireContext(), response, Toast.LENGTH_SHORT).show()
     }
 
     override fun onDestroyView() {
