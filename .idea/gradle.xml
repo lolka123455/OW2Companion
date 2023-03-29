@@ -17,7 +17,7 @@
             <option value="$PROJECT_DIR$/navigation" />
             <option value="$PROJECT_DIR$/player_details_info_screen" />
             <option value="$PROJECT_DIR$/search_player_screen" />
-            <option value="$PROJECT_DIR$/state_screen" />
+            <option value="$PROJECT_DIR$/state_network_connection" />
           </set>
         </option>
       </GradleProjectSettings>
