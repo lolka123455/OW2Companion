@@ -1,4 +1,4 @@
-package com.ow2companion
+package app.ow2companion
 
 import android.app.Application
 import com.allHeroesList.ow2companion.di.AllHeroesModule

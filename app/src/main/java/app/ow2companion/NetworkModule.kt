@@ -1,4 +1,4 @@
-package com.ow2companion
+package app.ow2companion
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -15,7 +15,9 @@ val NetworkModule = module {
         }
     }
     single {
-        OkHttpClient.Builder().addInterceptor(get() as HttpLoggingInterceptor).build()
+        OkHttpClient.Builder()
+            .addInterceptor(get<HttpLoggingInterceptor>())
+            .build()
     }
     single {
         Retrofit.Builder()
