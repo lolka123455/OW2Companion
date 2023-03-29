@@ -16,10 +16,24 @@ class GameModesViewModel(
     private val getAllGameModesUseCase: GetAllGameModesListUseCase
 ) : ViewModel() {
 
-    // Add a data class to deserialize validation error responses
-    private data class ValidationError(val detail: List<Detail>)
+    /**
+     * Represents a validation error response from the server.
+     *
+     * @property details A list of [ValidationErrorDetail] objects containing information about the
+     * validation errors.
+     */
+    private data class ValidationErrorResponse(
+        val validationErrorDetail: List<ValidationErrorDetail>
+    )
 
-    private data class Detail(val loc: List<Any>, val msg: String, val type: String)
+    /**
+     * Represents a detail of a validation error.
+     *
+     * @property loc A list of objects representing the location of the validation error.
+     * @property msg A string containing a message describing the validation error.
+     * @property type A string representing the type of the validation error.
+     */
+    private data class ValidationErrorDetail(val loc: List<Any>, val msg: String, val type: String)
 
     private val _gameModesList = MutableStateFlow(listOf<GameModesItem>())
     val gameModesList: StateFlow<List<GameModesItem>> = _gameModesList
@@ -27,7 +41,7 @@ class GameModesViewModel(
     private val _serverResponse = MutableStateFlow<String?>(null)
     val serverResponse: StateFlow<String?> = _serverResponse
 
-    fun getGameModes() {
+    internal fun getGameModes() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val result = getAllGameModesUseCase.invoke()
@@ -39,39 +53,29 @@ class GameModesViewModel(
     }
 
     private fun handleException(e: Exception) {
-        when (e) {
-            is HttpException -> {
-                val errorMessage = when (e.code()) {
-                    422 -> {
-                        val errorBody = e.response()?.errorBody()?.string()
-                        val validationError =
-                            Gson().fromJson(errorBody, ValidationError::class.java)
-                        "Validation Error: ${validationError.detail}"
-                    }
-                    500 -> {
-                        "Internal Server Error: ${e.message()}"
-                    }
-                    504 -> {
-                        "Blizzard Server Error: ${e.message()}"
-                    }
-                    else -> {
-                        "Server Error: ${e.message()}"
-                    }
-                }
-                _serverResponse.tryEmit(errorMessage)
+        val errorMessage = when (e) {
+            is HttpException -> handleHttpException(e)
+            is IOException -> "Network Error: ${e.message}"
+            else -> "Error: ${e.message}"
+        }
+        _serverResponse.tryEmit(errorMessage)
+    }
+
+    private fun handleHttpException(e: HttpException): String {
+        return when (e.code()) {
+            422 -> {
+                val errorBody = e.response()?.errorBody()?.string()
+                val validationErrorResponse =
+                    Gson().fromJson(errorBody, ValidationErrorResponse::class.java)
+                "Validation Error: ${validationErrorResponse.validationErrorDetail}"
             }
-            is IOException -> {
-                _serverResponse.tryEmit("Network Error: ${e.message}")
-            }
-            else -> {
-                _serverResponse.tryEmit("Error: ${e.message}")
-            }
+            500 -> "Internal Server Error: ${e.message()}"
+            504 -> "Blizzard Server Error: ${e.message()}"
+            else -> "Server Error: ${e.message()}"
         }
     }
 
-    // Add a function to clear the server response state flow
     internal fun clearServerResponse() {
-        // Clears the current state of _serverResponse
         _serverResponse.tryEmit(null)
     }
 

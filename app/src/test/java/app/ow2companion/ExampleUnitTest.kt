@@ -1,4 +1,4 @@
-package com.ow2companion
+package app.ow2companion
 
 import org.junit.Assert.*
 import org.junit.Test

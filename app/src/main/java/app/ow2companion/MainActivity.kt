@@ -1,9 +1,10 @@
-package com.ow2companion
+package app.ow2companion
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.ow2companion.R
 import com.ow2companion.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

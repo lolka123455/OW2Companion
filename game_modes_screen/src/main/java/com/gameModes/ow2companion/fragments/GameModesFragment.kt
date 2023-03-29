@@ -88,13 +88,6 @@ class GameModesFragment : Fragment() {
         }
     }
 
-    /**
-     * Displays a Toast message.
-     * This function is called by observeServerResponse() whenever the serverResponse variable
-     * of the viewModel changes.
-     *
-     * @param response The message to be displayed in the Toast.
-     */
     private fun displayServerResponse(response: String) {
         Toast.makeText(requireContext(), response, Toast.LENGTH_SHORT).show()
     }

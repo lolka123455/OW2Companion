@@ -6,6 +6,7 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -14,6 +15,7 @@ import com.searchPlayer.ow2companion.adapters.SearchPlayerDetailsAdapter
 import com.searchPlayer.ow2companion.databinding.FragmentSearchPlayerDetailsBinding
 import com.searchPlayer.ow2companion.network.models.SearchPlayer
 import com.searchPlayer.ow2companion.viewmodels.SearchPlayerDetailsViewModel
+import kotlinx.coroutines.flow.filterNotNull
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchPlayerDetailsFragment : Fragment(), SearchPlayerDetailsAdapter.PlayerItemListener {
@@ -52,7 +54,12 @@ class SearchPlayerDetailsFragment : Fragment(), SearchPlayerDetailsAdapter.Playe
         binding.rvFoundedPlayer.layoutManager = LinearLayoutManager(requireContext())
         binding.rvFoundedPlayer.adapter = adapter
 
+        observe()
+    }
+
+    private fun observe() {
         observeAndSetSimilarPlayers()
+        observeServerResponse()
     }
 
     private fun setInitialData(name: String) {
@@ -60,12 +67,7 @@ class SearchPlayerDetailsFragment : Fragment(), SearchPlayerDetailsAdapter.Playe
         viewModel.getSimilarPlayersFounded(modifiedName)
     }
 
-    /**
-     * Replaces all occurrences of '#' with '-' in the given [input] string.
-     *
-     * @param input The string to modify.
-     * @return A new string with all '#' replaced by '-'.
-     */
+    // Replace # with - to make the request
     private fun changeHashToMinus(input: String): String {
         return input.replace("#", "-")
     }
@@ -118,7 +120,6 @@ class SearchPlayerDetailsFragment : Fragment(), SearchPlayerDetailsAdapter.Playe
         }
     }
 
-    // Тут мы берем то что вписал пользователь применяем changeMinusToHash и прокидываем
     override fun onClickedPlayer(playerName: String) {
         val bundle = Bundle()
         val inputText = binding.etSearchNamePlayer.text.toString().trim()
@@ -139,6 +140,21 @@ class SearchPlayerDetailsFragment : Fragment(), SearchPlayerDetailsAdapter.Playe
         binding.ibBack.setOnClickListener {
             findNavController().navigateUp()
         }
+    }
+
+    private fun observeServerResponse() {
+        lifecycleScope.launchWhenStarted {
+            viewModel.serverResponse
+                .filterNotNull()
+                .collect { response ->
+                    displayServerResponse(response)
+                    viewModel.clearServerResponse()
+                }
+        }
+    }
+
+    private fun displayServerResponse(response: String) {
+        Toast.makeText(requireContext(), response, Toast.LENGTH_SHORT).show()
     }
 
     override fun onDestroyView() {
