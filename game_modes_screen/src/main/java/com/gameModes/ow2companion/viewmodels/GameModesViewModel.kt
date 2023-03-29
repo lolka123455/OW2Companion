@@ -5,12 +5,12 @@ import androidx.lifecycle.viewModelScope
 import com.gameModes.ow2companion.network.models.GameModesItem
 import com.gameModes.ow2companion.usecases.GetAllGameModesListUseCase
 import com.google.gson.Gson
+import java.io.IOException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
-import java.io.IOException
 
 class GameModesViewModel(
     private val getAllGameModesUseCase: GetAllGameModesListUseCase
@@ -22,7 +22,9 @@ class GameModesViewModel(
      * @property details A list of [ValidationErrorDetail] objects containing information about the
      * validation errors.
      */
-    private data class ValidationErrorResponse(val validationErrorDetail: List<ValidationErrorDetail>)
+    private data class ValidationErrorResponse(
+        val validationErrorDetail: List<ValidationErrorDetail>
+    )
 
     /**
      * Represents a detail of a validation error.
