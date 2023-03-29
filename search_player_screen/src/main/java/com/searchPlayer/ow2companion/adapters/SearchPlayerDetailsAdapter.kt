@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -59,21 +60,42 @@ class SearchPlayerDetailsAdapter(private val listener: PlayerItemListener) :
         }
 
         fun bind(item: SearchPlayer) {
-            this.playerItem = item
-            binding.playerUsername.text = item.username
-            binding.playerTitle.text = item.title
+            playerItem = item
+            with(binding) {
+                playerUsername.text = item.username
+                playerTitle.text = item.title
+                loadGlideImage(item.avatar, playerAvatar)
 
-            loadGlideImage(item.avatar, binding.playerAvatar)
-            loadGlideImage(item.competitive.pc.tank.rank_icon, binding.ivTankRank)
-            loadGlideImage(item.competitive.pc.damage.rank_icon, binding.ivDamageRank)
-            loadGlideImage(item.competitive.pc.support.rank_icon, binding.ivSupportRank)
+                if (item.privacy == "public") {
+                    loadGlideImage(getReputationIcon(item.endorsement.level), ivLvlReputation)
+                    loadGlideImage(item.competitive.pc.tank.rank_icon, ivTankRank)
+                    loadGlideImage(item.competitive.pc.damage.rank_icon, ivDamageRank)
+                    loadGlideImage(item.competitive.pc.support.rank_icon, ivSupportRank)
+                } else {
+                    setRankIconsVisibility()
+                    ivLvlReputation.visibility = View.GONE
+                    root.setOnClickListener(null)
+                    Toast.makeText(root.context, "This player is private", Toast.LENGTH_SHORT)
+                        .show()
+                }
+            }
+        }
 
-            when (item.endorsement.level) {
-                1 -> loadGlideImage(R.drawable.ic_1_lvl_rep, binding.ivLvlReputation)
-                2 -> loadGlideImage(R.drawable.ic_2_lvl_rep, binding.ivLvlReputation)
-                3 -> loadGlideImage(R.drawable.ic_3_lvl_rep, binding.ivLvlReputation)
-                4 -> loadGlideImage(R.drawable.ic_4_lvl_rep, binding.ivLvlReputation)
-                else -> binding.ivLvlReputation.visibility = View.GONE
+        private fun getReputationIcon(level: Int): Int? {
+            return when (level) {
+                1 -> R.drawable.ic_1_lvl_rep
+                2 -> R.drawable.ic_2_lvl_rep
+                3 -> R.drawable.ic_3_lvl_rep
+                4 -> R.drawable.ic_4_lvl_rep
+                else -> null
+            }
+        }
+
+        private fun setRankIconsVisibility() {
+            with(binding) {
+                ivTankRank.visibility = View.GONE
+                ivDamageRank.visibility = View.GONE
+                ivSupportRank.visibility = View.GONE
             }
         }
 
