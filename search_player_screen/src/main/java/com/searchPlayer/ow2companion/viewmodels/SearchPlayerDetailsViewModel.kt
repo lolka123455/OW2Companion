@@ -5,12 +5,12 @@ import androidx.lifecycle.viewModelScope
 import com.google.gson.Gson
 import com.searchPlayer.ow2companion.network.models.SearchPlayer
 import com.searchPlayer.ow2companion.usecases.GetAllSimilarPlayersFoundedUseCase
+import java.io.IOException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
-import java.io.IOException
 
 class SearchPlayerDetailsViewModel(
     private val getAllSimilarPlayersFoundedUseCase: GetAllSimilarPlayersFoundedUseCase
@@ -82,5 +82,4 @@ class SearchPlayerDetailsViewModel(
         super.onCleared()
         clearServerResponse()
     }
-
 }

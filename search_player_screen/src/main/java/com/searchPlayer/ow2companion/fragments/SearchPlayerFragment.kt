@@ -31,7 +31,8 @@ class SearchPlayerFragment : Fragment() {
     private fun onSearchClicked() {
         binding.flSearch.setOnClickListener {
             findNavController().navigate(
-                com.navigation.ow2companion.R.id.action_searchPlayerFragment_to_searchPlayerDetailsFragment
+                com.navigation.ow2companion
+                    .R.id.action_searchPlayerFragment_to_searchPlayerDetailsFragment
             )
         }
     }
