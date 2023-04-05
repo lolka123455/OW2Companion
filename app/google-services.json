@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "544746689253",
+    "project_id": "ow2-companion",
+    "storage_bucket": "ow2-companion.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:544746689253:android:55721d0278e4162a32fa0c",
+        "android_client_info": {
+          "package_name": "com.ow2companion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "544746689253-ksfhmgu9qb2f061l5ftuikjiqvcejel1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqh_cDuqmR13k-HRtSuC9AJyShxOrU1Oo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "544746689253-ksfhmgu9qb2f061l5ftuikjiqvcejel1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
